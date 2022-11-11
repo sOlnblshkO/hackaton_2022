@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "8/FzMcnFmc6YPlJSvDcM9QJ61sa7CKVJnllKtRY03oDAkCcIaSFwQEW9TjUWQaGcWizeMqqEnC2OXDyx8LnTGg==",
+  "dgSpecHash": "CkfIPeuqWa0wtfNrHbq89Cb1miQMykRlpIkxoLfWqoILZm+DAF3BK+TtUbx47ZBDMU33wHTb8v9jNmdDhueC0w==",
   "success": true,
   "projectFilePath": "C:\\Users\\KamilMustafin\\dotnet_android\\backend\\backend\\backend.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\KamilMustafin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
   "logs": [
     {
       "code": "NU1803",
