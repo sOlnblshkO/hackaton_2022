@@ -10,9 +10,10 @@ import com.example.qiwi_front.R
 import com.example.qiwi_front.base.viewModel.ViewModelBase
 import com.example.qiwi_front.databinding.StatesBinding
 
-abstract class FragmentBase<VBinding : ViewBinding, ViewModel : ViewModelBase>(
+abstract class FragmentBase<VBinding : ViewBinding, ViewModel : ViewModelBase> :
+    StateObserverSetter() {
     private val fragmentContainerId: Int = R.id.mainFragmentContainer
-) : StateObserverSetter() {
+
     protected lateinit var viewModel: ViewModel
     protected abstract fun getViewModelClass(): Class<ViewModel>
 

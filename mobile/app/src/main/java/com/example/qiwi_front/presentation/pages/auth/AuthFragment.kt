@@ -9,6 +9,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class AuthFragment @Inject constructor() : FragmentBase<AuthFragmentBinding, AuthViewModel>() {
 
+    companion object {
+        fun newInstance() = AuthFragment()
+    }
+
     override fun getViewModelClass(): Class<AuthViewModel> = AuthViewModel::class.java
 
     override fun getViewBinding(): AuthFragmentBinding = AuthFragmentBinding.inflate(layoutInflater)
