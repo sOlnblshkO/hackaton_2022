@@ -2,7 +2,7 @@
 using Infrastructure.CQRS;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.Extensions;
+namespace Logic;
 
 public static class ServiceExtension
 {
