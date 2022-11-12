@@ -15,5 +15,10 @@ public class AppContext : IdentityDbContext<User>
     public DbSet<Seller> Sellers { get; set; }
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Role> Roles { get; set; }
-
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Seed();
+    }
 }
