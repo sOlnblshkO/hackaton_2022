@@ -1,13 +1,10 @@
 ﻿using Infrastructure.CQRS;
 using Logic.Customer.DTO;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using AppContext = Context.AppContext;
 
 namespace Logic.Customer.Handlers;
 
-public class RegisterCustomerCommand: IQuery<RegisterCustomerDto, bool>
+public class RegisterCustomerCommand: IQuery<RegisterCustomerDto, IdentityResult>
 {
     
     
@@ -18,18 +15,17 @@ public class RegisterCustomerCommand: IQuery<RegisterCustomerDto, bool>
         _userManager = userManager;
     }
 
-    public Task<bool> Execute(RegisterCustomerDto dto)
+    public Task<IdentityResult> Execute(RegisterCustomerDto dto)
     {
         
         var newUser = new Context.Models.User
         {
             PhoneNumber = dto.Phone,
-            UserName = dto.Name,
-            AccountId = dto.AccountId,
+            UserName = dto.Name
         };
         
         var hashedPass =_userManager.PasswordHasher.HashPassword(newUser, dto.Password);
-        var res = _userManager.CreateAsync(newUser, hashedPass).Result.Succeeded;
+        var res = _userManager.CreateAsync(newUser, hashedPass).Result;
         return Task.FromResult(res);
     }
 }

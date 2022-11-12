@@ -26,6 +26,7 @@ public static class ServicesExtension
         serviceCollection.AddControllers();
         serviceCollection.AddHttpClient();
         serviceCollection.AddAuthentication();
+        serviceCollection.AddAuthorization();
         serviceCollection.AddScoped<IQiwiService, QiwiService>();
         serviceCollection.AddScoped<IGetQiwiClient, GetQiwiClient>();
     }
