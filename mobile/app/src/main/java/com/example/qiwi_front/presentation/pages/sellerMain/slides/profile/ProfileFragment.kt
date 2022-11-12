@@ -10,6 +10,13 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ProfileFragment @Inject constructor() : FragmentBase<FragmentProfileBinding, ProfileViewModel>()  {
 
+    override fun setUpViews() {
+        super.setUpViews()
+        binding.sellerLogoutBtn.setOnClickListener {
+            viewModel.exit()
+            replaceFragment(AuthFragment.newInstance())
+        }
+    }
 
     companion object {
         fun newInstance() = ProfileFragment()
