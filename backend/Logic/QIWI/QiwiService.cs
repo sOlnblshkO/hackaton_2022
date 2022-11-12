@@ -49,13 +49,12 @@ public class QiwiService : IQiwiService
     public async Task<string> Pay(QiwiBillrequestDto dto)
     {
         var client = _qiwiClient.Get();
-        var roundedValue = Math.Round(dto.amount.value, 2, MidpointRounding.ToZero);
         var dtoForQiwi = new PayRequestQiwiDto
         {
             amount = new BillData
             {
                 currency = dto.amount.currency,
-                value = roundedValue
+                value = dto.amount.value
             },
             customer = new BillCustomer
             {

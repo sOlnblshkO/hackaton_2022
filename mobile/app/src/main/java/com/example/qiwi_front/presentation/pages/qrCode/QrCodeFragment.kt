@@ -9,10 +9,16 @@ import com.example.qiwi_front.databinding.StatesBinding
 import com.example.qiwi_front.utils.contracts.PaymentData
 import com.google.gson.Gson
 
-class QrCodeFragment(val amount: String, val name: String, val legalName: String,val token: CodeToken?) :
+class QrCodeFragment(
+    val amount: String,
+    val name: String,
+    val legalName: String,
+    val token: CodeToken?,
+    val requestId: String?
+) :
     FragmentBase<FragmentQrCodeBinding, QrCodeViewModel>() {
 
-    val QRDimension = 1024
+    val QRDimension = 4096
 
     override fun setUpViews() {
         super.setUpViews()
@@ -20,7 +26,8 @@ class QrCodeFragment(val amount: String, val name: String, val legalName: String
         binding.qrCodeNameText.text = "Магазин $name"
         binding.qrCodeLegalText.text = "ИП $legalName"
 
-        val tempToQrCode = PaymentData(token?.value ?: "")
+        val tempToQrCode =
+            PaymentData(token?.value ?: "", amount, "qwe12", requestId.toString(), legalName, name)
         val gson = Gson()
         val qrCodeEncoder =
             QRGEncoder(gson.toJson(tempToQrCode), QRGContents.Type.TEXT, QRDimension)
@@ -28,9 +35,16 @@ class QrCodeFragment(val amount: String, val name: String, val legalName: String
     }
 
     companion object {
-        fun newInstance(amount: String, name: String, legalName: String, token: CodeToken?) = QrCodeFragment(
-            amount, name, legalName, token
-        )
+        fun newInstance(
+            amount: String,
+            name: String,
+            legalName: String,
+            token: CodeToken?,
+            requestId: String?
+        ) =
+            QrCodeFragment(
+                amount, name, legalName, token, requestId
+            )
     }
 
     override fun getViewModelClass(): Class<QrCodeViewModel> = QrCodeViewModel::class.java

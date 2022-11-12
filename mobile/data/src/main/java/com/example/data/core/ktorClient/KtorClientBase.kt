@@ -102,7 +102,6 @@ open class KtorClientBase() {
             val httpResponse = ktorHttpClient.post(urlRequest) {
                 setBody(requestBody)
             }
-            Log.d("GOT", httpResponse.body())
             response = httpResponse.body()
         } catch (ex: Exception) {
         }

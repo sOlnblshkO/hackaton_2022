@@ -52,7 +52,8 @@ class SelectedShopFragment @Inject constructor(val selectedShopId: Int) :
                         binding.amountInput.text.toString(),
                         viewModel.loadedShopData.value!!.Name,
                         viewModel.loadedShopData.value!!.LegalName,
-                        it.result.token
+                        it.result.token,
+                        it.result.requestId
                     )
                 )
             } else {
