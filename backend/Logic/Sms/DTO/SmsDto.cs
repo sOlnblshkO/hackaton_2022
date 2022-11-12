@@ -2,6 +2,6 @@
 
 public class SmsDto
 {
-    public string RequestId { get; set; }
-    public string SmsCode { get; set; }
+    public string requestId { get; set; }
+    public string smsCode { get; set; }
 }

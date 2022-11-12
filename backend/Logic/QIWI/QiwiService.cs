@@ -46,8 +46,15 @@ public class QiwiService : IQiwiService
         return await response.Content.ReadAsStringAsync();
     }
 
-    public string CreateBill()
+    public async Task<string> CreateBill(QiwiBillrequestDto dto)
     {
-        throw new NotImplementedException();
+        var client = _qiwiClient.Get();
+        var requestBody = JsonConvert.SerializeObject(dto);
+        StringContent httpContent = new StringContent(requestBody, System.Text.Encoding.UTF8, "application/json");
+        HttpResponseMessage response = client.PutAsync("payin/v1/sites/sa3khn-09/bills/123w123",
+            httpContent).Result;
+        
+        
+        return await response.Content.ReadAsStringAsync();
     }
 }

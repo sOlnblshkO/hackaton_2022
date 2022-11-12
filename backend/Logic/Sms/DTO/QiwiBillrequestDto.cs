@@ -2,11 +2,9 @@
 
 public class QiwiBillrequestDto
 {
-    public string SiteId { get; set; }
-    public string BillId { get; set; }
-    public BillData Ammount { get; set; }
-    public DateTime ExpirationDateTime { get; set; }
-    public string comment { get; set; }
+    public BillData Amount { get; set; }
+    public TokenMethod paymentMethod { get; set; }
+    public BillCustomer Customer { get; set; }
     
 }
 
@@ -14,4 +12,15 @@ public class BillData
 {
     public decimal Value { get; set; }
     public string Currency { get; set; }
+}
+
+public class TokenMethod
+{
+    public string Type = "TOKEN";
+    public string PaymentToken { get; set; }
+}
+
+public class BillCustomer
+{
+    public string Account { get; set; }
 }

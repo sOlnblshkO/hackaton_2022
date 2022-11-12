@@ -1,10 +1,11 @@
 ﻿using Infrastructure.CQRS;
 using Logic.QIWI;
 using Logic.Sms.DTO;
+using Newtonsoft.Json;
 
 namespace Logic.Sms.Handlers;
 
-public class GetSmsQueryHandler : IQuery<GetCodeForPhoneDto, string>
+public class GetSmsQueryHandler : IQuery<GetCodeForPhoneDto, GetSmsResponseDto>
 {
     private readonly IQiwiService _qiwiService;
 
@@ -13,9 +14,10 @@ public class GetSmsQueryHandler : IQuery<GetCodeForPhoneDto, string>
         _qiwiService = qiwiService;
     }
 
-    public async Task<string> Execute(GetCodeForPhoneDto request)
+    public async Task<GetSmsResponseDto> Execute(GetCodeForPhoneDto request)
     {
        
-        return  await _qiwiService.SentSms(request.PhoneNumber, request.RequestId);
+        return JsonConvert.DeserializeObject<GetSmsResponseDto>(await _qiwiService.SentSms(request.PhoneNumber, request.RequestId) 
+                                                                ?? throw new InvalidOperationException()) ?? throw new InvalidOperationException();
     }
 }
