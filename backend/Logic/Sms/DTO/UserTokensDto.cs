@@ -7,14 +7,12 @@ public class UserTokensDto
     public Token Token { get; set; } 
     public Customer Customer { get; set; }
 }
-public class StatusDto
+public class StatusDto : ValueDto
 {
-    public string Value { get; set; }
 }
 
-public class Token
+public class Token : ValueDto
 {
-    public string Value { get; set; }
     public DateTime ExpireDate { get; set; }
 }
 
