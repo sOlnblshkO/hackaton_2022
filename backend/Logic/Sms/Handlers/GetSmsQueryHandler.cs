@@ -17,7 +17,7 @@ public class GetSmsQueryHandler : IQuery<GetCodeForPhoneDto, GetSmsResponseDto>
     public async Task<GetSmsResponseDto> Execute(GetCodeForPhoneDto request)
     {
        
-        return JsonConvert.DeserializeObject<GetSmsResponseDto>(await _qiwiService.SentSms(request.PhoneNumber, request.RequestId) 
+        return JsonConvert.DeserializeObject<GetSmsResponseDto>(await _qiwiService.SentSms(request.PhoneNumber, request.RequestId, "qwe12") 
                                                                 ?? throw new InvalidOperationException()) ?? throw new InvalidOperationException();
     }
 }

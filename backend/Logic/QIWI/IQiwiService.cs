@@ -4,7 +4,7 @@ namespace Logic.QIWI;
 
 public interface IQiwiService
 {
-    public Task<string> SentSms(string phoneNum, string requestId);
+    public Task<string> SentSms(string phoneNum, string requestId, string accountId);
 
     public Task<string> CheckSms(SmsDto dto);
 

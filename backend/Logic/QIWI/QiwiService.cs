@@ -16,13 +16,13 @@ public class QiwiService : IQiwiService
         _qiwiClient = qiwiClient;
     }
 
-    public async Task<string> SentSms(string phoneNum, string requestId)
+    public async Task<string> SentSms(string phoneNum, string requestId, string accountId)
     {
         var client = _qiwiClient.Get();
         var requestBody = JsonConvert.SerializeObject(
             new QIWISentSmsDto
             {
-                accountId = "qwe12",
+                accountId = accountId,
                 phone = phoneNum,
                 requestId = requestId
             });
