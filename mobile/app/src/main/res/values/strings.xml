@@ -2,4 +2,6 @@
     <string name="app_name">qiwi_front</string>
     <string name="customer">Покупатель</string>
     <string name="seller">Продавец</string>
+    <string name="enter">Войти</string>
+    <string name="not_registered_yet"><u>Ещё нет аккаунта?</u></string>
 </resources>

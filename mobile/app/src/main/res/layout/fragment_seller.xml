@@ -7,7 +7,7 @@
     tools:context=".presentation.pages.auth.slides.seller.SellerAuthFragment">
 
     <com.google.android.material.textview.MaterialTextView
-        style="@style/AuthTitleText"1
+        style="@style/AuthTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/customer"
@@ -15,6 +15,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="32dp"/>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="150dp"
+        android:gravity="center">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_registered_yet"
+            android:textColor="@color/orange"/>
+    </LinearLayout>
 
     <include
         android:id="@+id/sellerAuthStates"
