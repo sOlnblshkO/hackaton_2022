@@ -1,18 +1,24 @@
 ﻿using System.Net.Http.Headers;
-using Logic.Auth.DTO;
+using Logic.QIWI.GetClient;
+using Logic.Sms.DTO;
 using Newtonsoft.Json;
 
 namespace Logic.QIWI;
 
 public class QiwiService : IQiwiService
 {
-    const string QiwiUrl  = "https://api.qiwi.com/partner/";
+    private readonly IGetQiwiClient _qiwiClient;
+    
     const string MoqedSiteId  = "sa3khn-09";
-    const string MoqedAccountId  = "04361f47-e4ff-41c7-bd37-dd473f472187";
+
+    public QiwiService(IGetQiwiClient qiwiClient)
+    {
+        _qiwiClient = qiwiClient;
+    }
 
     public async Task<string> SentSms(string phoneNum, string requestId)
     {
-        var client = GetClient();
+        var client = _qiwiClient.Get();
         var requestBody = JsonConvert.SerializeObject(
             new QIWISentSmsDto
             {
@@ -30,7 +36,7 @@ public class QiwiService : IQiwiService
 
     public async Task<string> CheckSms(SmsDto dto)
     {
-        var client = GetClient();
+        var client = _qiwiClient.Get();
         var requestBody = JsonConvert.SerializeObject(dto);
         StringContent httpContent = new StringContent(requestBody, System.Text.Encoding.UTF8, "application/json");
         HttpResponseMessage response = client.PostAsync("payin-tokenization-api/v1/sites/sa3khn-09/token-requests/complete", 
@@ -40,14 +46,8 @@ public class QiwiService : IQiwiService
         return await response.Content.ReadAsStringAsync();
     }
 
-    private HttpClient GetClient()
+    public string CreateBill()
     {
-        HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri(QiwiUrl);
-        client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", MoqedAccountId);
-
-        return client;
+        throw new NotImplementedException();
     }
 }

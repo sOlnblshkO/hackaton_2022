@@ -1,4 +1,4 @@
-namespace Logic.Auth.DTO;
+namespace Logic.Sms.DTO;
 
 public class GetCodeForPhoneDto
 {

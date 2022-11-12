@@ -1,14 +1,14 @@
 ﻿using Infrastructure.CQRS;
-using Logic.Auth.DTO;
 using Logic.QIWI;
+using Logic.Sms.DTO;
 
-namespace Logic.Auth;
+namespace Logic.Sms.Handlers;
 
-public class LoginQueryHandler : IQuery<GetCodeForPhoneDto, string>
+public class GetSmsQueryHandler : IQuery<GetCodeForPhoneDto, string>
 {
     private readonly IQiwiService _qiwiService;
 
-    public LoginQueryHandler(IQiwiService qiwiService)
+    public GetSmsQueryHandler(IQiwiService qiwiService)
     {
         _qiwiService = qiwiService;
     }
