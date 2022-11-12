@@ -87,15 +87,15 @@ msbuild.wrn
 
 # Rider
 # Rider auto-generates .iml files, and contentModel.xml
-**/.idea/**/*.iml
+backend/backend/.idea/
 **/.idea/**/contentModel.xml
 **/.idea/**/modules.xml
 
 *.suo
 *.user
 .vs/
-[Bb]in/
-[Oo]bj/
+backend/backend/[Bb]in/
+backend/backend/[Oo]bj/
 _UpgradeReport_Files/
 [Pp]ackages/
 
