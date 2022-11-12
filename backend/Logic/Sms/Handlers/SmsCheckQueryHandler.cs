@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace Logic.Sms.Handlers;
 
-public class SmsCheckQueryHandler : IQuery<SmsDto, UserTokensDto>
+public class SmsCheckQueryHandler : IQuery<SmsDto, CheckSmsResponseDto>
 {
     private readonly IQiwiService _qiwiService;
 
@@ -14,9 +14,9 @@ public class SmsCheckQueryHandler : IQuery<SmsDto, UserTokensDto>
         _qiwiService = qiwiService;
     }
 
-    public async Task<UserTokensDto> Execute(SmsDto query)
+    public async Task<CheckSmsResponseDto> Execute(SmsDto query)
     {
         var result = await _qiwiService.CheckSms(query);
-        return JsonConvert.DeserializeObject<UserTokensDto>(result) ?? throw new InvalidOperationException();
+        return JsonConvert.DeserializeObject<CheckSmsResponseDto>(result) ?? throw new InvalidOperationException();
     }
 }
