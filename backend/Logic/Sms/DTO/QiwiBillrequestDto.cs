@@ -1,26 +1,32 @@
 ﻿namespace Logic.Sms.DTO;
 
-public class QiwiBillrequestDto
+public class QiwiBillrequestDto : PayRequestQiwiDto
 {
-    public BillData Amount { get; set; }
-    public TokenMethod paymentMethod { get; set; }
-    public BillCustomer Customer { get; set; }
+    public string RequestId { get; set; }
+    
     
 }
 
 public class BillData
 {
-    public decimal Value { get; set; }
-    public string Currency { get; set; }
+    public decimal value { get; set; }
+    public string currency { get; set; }
 }
 
 public class TokenMethod
 {
-    public string Type = "TOKEN";
-    public string PaymentToken { get; set; }
+    public string type = "TOKEN";
+    public string paymentToken { get; set; }
 }
 
 public class BillCustomer
 {
-    public string Account { get; set; }
+    public string account { get; set; }
+}
+
+public class PayRequestQiwiDto
+{
+    public BillData amount { get; set; }
+    public TokenMethod paymentMethod { get; set; }
+    public BillCustomer customer { get; set; }
 }

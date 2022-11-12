@@ -8,5 +8,5 @@ public interface IQiwiService
 
     public Task<string> CheckSms(SmsDto dto);
 
-    public Task<string> CreateBill(QiwiBillrequestDto query);
+    public Task<string> Pay(QiwiBillrequestDto query);
 }
