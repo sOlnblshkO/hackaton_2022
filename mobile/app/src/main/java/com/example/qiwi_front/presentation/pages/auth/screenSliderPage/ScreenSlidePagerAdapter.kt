@@ -9,7 +9,7 @@ class ScreenSlidePagerAdapter(fa: Fragment) : FragmentStateAdapter(fa) {
     override fun getItemCount(): Int = 2
 
     override fun createFragment(position: Int): Fragment {
-        if (position == 0){
+        if (position == 0) {
             return SellerAuthFragment.newInstance()
         } else {
             return CustomerAuthFragment.newInstance()
