@@ -22,29 +22,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        var currentFragmentId = -1;
-//        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-//            when (item.itemId) {
-//                R.id.nav_scanner -> {
-//                    if (currentFragmentId != R.id.nav_scanner) {
-//                        supportFragmentManager.beginTransaction()
-//                            .replace(R.id.mainFragmentContainer, ScannerFragment()).commit();
-//                        currentFragmentId = R.id.nav_scanner;
-//                    }
-//                }
-//                R.id.nav_profile -> {
-//                    if (currentFragmentId != R.id.nav_profile) {
-//                        supportFragmentManager.beginTransaction()
-//                            .replace(R.id.mainFragmentContainer, ProfileFragment()).commit();
-//                        currentFragmentId = R.id.nav_profile;
-//                    }
-//                }
-//                else -> false
-//            }
-//            true
-//        }
-//
-
         if (sharedPreferencesUsage.getBoolean(applicationContext, AppSettings.IsAuth)){
             if (sharedPreferencesUsage.getStringSharedPreferences(applicationContext, AppSettings.UserRole) == UserRoleEnum.Customer.name){
 

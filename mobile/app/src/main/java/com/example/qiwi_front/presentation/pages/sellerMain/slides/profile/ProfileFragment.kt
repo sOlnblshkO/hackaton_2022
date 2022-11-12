@@ -12,7 +12,7 @@ class ProfileFragment @Inject constructor() : FragmentBase<FragmentProfileBindin
 
 
     companion object {
-        fun newInstance() = AuthFragment()
+        fun newInstance() = ProfileFragment()
     }
 
     override fun getViewModelClass(): Class<ProfileViewModel> = ProfileViewModel::class.java
