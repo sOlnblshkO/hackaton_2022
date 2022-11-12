@@ -8,10 +8,12 @@ namespace Logic.Auth;
 public class AuthController : ControllerBase
 {
     private readonly LoginQueryHandler _loginQueryHandler;
+    private readonly SmsCheckQueryHandler _smsCheckQueryHandler;
 
-    public AuthController(LoginQueryHandler loginQueryHandler)
-    {   
+    public AuthController(LoginQueryHandler loginQueryHandler, SmsCheckQueryHandler smsCheckQueryHandler)
+    {
         _loginQueryHandler = loginQueryHandler;
+        _smsCheckQueryHandler = smsCheckQueryHandler;
     }
 
     [HttpPost("login")]
@@ -21,4 +23,10 @@ public class AuthController : ControllerBase
         return Ok(result);
     }
     
+    [HttpPost("checkSms")]
+    public IActionResult CheckSms([FromBody]SmsDto request)
+    {
+        var result = _smsCheckQueryHandler.Execute(request);
+        return Ok(result);
+    }
 }
