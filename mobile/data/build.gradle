@@ -66,4 +66,7 @@ dependencies {
     // Hilt
     kapt 'com.google.dagger:hilt-compiler:2.40.5'
     implementation 'com.google.dagger:hilt-android:2.40.5'
+
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
 }

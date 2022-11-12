@@ -4,6 +4,7 @@ import android.widget.Toast
 import com.example.qiwi_front.base.fragment.FragmentBase
 import com.example.qiwi_front.databinding.FragmentCustomerBinding
 import com.example.qiwi_front.databinding.StatesBinding
+import com.example.qiwi_front.presentation.pages.customerMain.customerMainPage.CustomerMainFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -29,7 +30,7 @@ class CustomerAuthFragment @Inject constructor() :
             if (!it)
                 return@observe
 
-//            replaceFragment(ScannerFragment.newInstance())
+            replaceFragment(CustomerMainFragment.newInstance())
         }
     }
 
