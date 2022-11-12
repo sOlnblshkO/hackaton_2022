@@ -14,10 +14,11 @@ public class RegisterSellerCommandHandler: ICommand<RegisterSellerDTO>
     private readonly RoleManager<Role> _roleManager;
 
 
-    public RegisterSellerCommandHandler(UserManager<Context.Models.User> userManager, AppContext dbContext)
+    public RegisterSellerCommandHandler(UserManager<Context.Models.User> userManager, AppContext dbContext, RoleManager<Role> roleManager)
     {
         _userManager = userManager;
         _dbContext = dbContext;
+        _roleManager = roleManager;
     }
 
     public async Task Handle(RegisterSellerDTO dto)

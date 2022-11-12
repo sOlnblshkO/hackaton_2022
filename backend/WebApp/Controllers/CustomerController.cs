@@ -1,5 +1,6 @@
 ﻿using Logic.Customer.DTO;
 using Logic.Customer.Handlers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
@@ -17,6 +18,7 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPost("Register")]
+    [AllowAnonymous]
     public IActionResult RegisterUser([FromBody] RegisterCustomerDto dto)
     {
         return Ok(_registerCustomerCommand.Execute(dto));

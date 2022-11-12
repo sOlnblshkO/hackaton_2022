@@ -38,6 +38,7 @@ public class SellerController: ControllerBase
     }
 
     [HttpPost("Register")]
+    [AllowAnonymous]
     public async Task<IActionResult> RegisterSeller(RegisterSellerDTO dto)
     {
        await _registerSellerCommandHandler.Handle(dto);
