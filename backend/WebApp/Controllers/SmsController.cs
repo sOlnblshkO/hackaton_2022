@@ -1,10 +1,12 @@
 ﻿using Logic.Sms.DTO;
 using Logic.Sms.Handlers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("[controller]")]
 public class SmsController : ControllerBase
 {
