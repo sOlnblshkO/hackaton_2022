@@ -1,23 +1,19 @@
 ﻿using Context.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Context;
 
-public class AppContext : DbContext
+public class AppContext : IdentityDbContext<User>
 {
     public AppContext(DbContextOptions<AppContext> options)
         : base(options)
     {
     }
     
-    public DbSet<User> Users { get; set; }
-    public DbSet<UserRole> Roles { get; set; }
-    public DbSet<Shop> Shops { get; set; }
-    public DbSet<ShoppingHistory> ShoppingHistories { get; set; }
+    public DbSet<User> Customers { get; set; }
+    public DbSet<Seller> Sellers { get; set; }
+    public DbSet<Payment> Payments { get; set; }
+    public DbSet<Role> Roles { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        
-    }
-    
 }

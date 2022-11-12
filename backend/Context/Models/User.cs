@@ -2,8 +2,7 @@
 
 namespace Context.Models;
 
-public class User : IdentityUser
+public class User: IdentityUser
 {
-    public UserRole Role { get; set; }
-
+    public Role Role { get; set; }
 }

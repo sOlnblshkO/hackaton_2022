@@ -2,7 +2,7 @@
 
 namespace Context.Models;
 
-public class UserRole : IdentityRole
+public class Role: IdentityRole
 {
     
 }

@@ -1,0 +1,13 @@
+﻿using Context.Abstractions;
+using Microsoft.AspNetCore.Identity;
+
+namespace Context.Models;
+
+public class Seller : BaseEntity<long>
+{
+    public User User { get; set; }
+    public string AvatarUrl { get; set; }
+    public string SiteId { get; set; }
+    public string Name { get; set; }
+    public string LegalName { get; set; }
+}
