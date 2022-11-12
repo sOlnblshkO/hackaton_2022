@@ -49,6 +49,12 @@ class ScannerFragment @Inject constructor() : FragmentBase<FragmentScannerBindin
 
 
         }
+        binding.scannerView.setOnClickListener {
+            try {
+                codeScanner.startPreview()
+            }
+            catch (ex: java.lang.Exception){}
+        }
         codeScanner.startPreview()
     }
 

@@ -46,7 +46,7 @@ open class KtorClient() : KtorClientBase() {
                 header(HttpHeaders.ContentType, Charset.forName("UTF-8"))
                 url {
                     protocol = URLProtocol.HTTPS
-                    host = ""
+                    host = "10.0.2.2:7142"
                 }
             }
 

@@ -1,5 +1,6 @@
 package com.example.data.core.ktorClient
 
+import android.util.Log
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
@@ -101,6 +102,7 @@ open class KtorClientBase() {
             val httpResponse = ktorHttpClient.post(urlRequest) {
                 setBody(requestBody)
             }
+            Log.d("GOT", httpResponse.body())
             response = httpResponse.body()
         } catch (ex: Exception) {
         }
