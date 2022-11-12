@@ -77,6 +77,9 @@ dependencies {
     implementation 'com.github.androidmads:QRGenerator:1.0.1'
     implementation 'com.google.zxing:core:3.3.2'
 
+    // qrcode scanner
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'
+
     // dots
     implementation "com.tbuonomo:dotsindicator:4.3"
 
