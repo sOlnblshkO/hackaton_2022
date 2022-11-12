@@ -20,8 +20,7 @@ public class RegisterCustomerCommand: IQuery<RegisterCustomerDto, IdentityResult
         
         var newUser = new Context.Models.User
         {
-            PhoneNumber = dto.Phone,
-            UserName = dto.Name
+            PhoneNumber = dto.Phone
         };
         
         var hashedPass =_userManager.PasswordHasher.HashPassword(newUser, dto.Password);
