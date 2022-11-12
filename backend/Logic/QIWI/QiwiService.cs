@@ -46,12 +46,31 @@ public class QiwiService : IQiwiService
         return await response.Content.ReadAsStringAsync();
     }
 
-    public async Task<string> CreateBill(QiwiBillrequestDto dto)
+    public async Task<string> Pay(QiwiBillrequestDto dto)
     {
         var client = _qiwiClient.Get();
-        var requestBody = JsonConvert.SerializeObject(dto);
+        var roundedValue = Math.Round(dto.amount.value, 2, MidpointRounding.ToZero);
+        var dtoForQiwi = new PayRequestQiwiDto
+        {
+            amount = new BillData
+            {
+                currency = dto.amount.currency,
+                value = roundedValue
+            },
+            customer = new BillCustomer
+            {
+                account = dto.customer.account
+            },
+            paymentMethod = new TokenMethod
+            {
+                paymentToken = dto.paymentMethod.paymentToken,
+                type = dto.paymentMethod.type
+            }
+        };
+        var requestBody = JsonConvert.SerializeObject(dtoForQiwi);
         StringContent httpContent = new StringContent(requestBody, System.Text.Encoding.UTF8, "application/json");
-        HttpResponseMessage response = client.PutAsync("payin/v1/sites/sa3khn-09/bills/123w123",
+        string url = "payin/v1/sites/sa3khn-09/payments/" + dto.RequestId;
+        HttpResponseMessage response = client.PutAsync(url,
             httpContent).Result;
         
         

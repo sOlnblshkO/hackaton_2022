@@ -4,18 +4,18 @@ using Logic.Sms.DTO;
 
 namespace Logic.Sms.Handlers;
 
-public class GetBillQueryHandler : IQuery<QiwiBillrequestDto, string>
+public class PayQueryHandler : IQuery<QiwiBillrequestDto, string>
 {
     private readonly IQiwiService _qiwiService;
 
-    public GetBillQueryHandler(IQiwiService qiwiService)
+    public PayQueryHandler(IQiwiService qiwiService)
     {
         _qiwiService = qiwiService;
     }
 
     public Task<string> Execute(QiwiBillrequestDto query)
     {
-        var client = _qiwiService.CreateBill(query);
+        var client = _qiwiService.Pay(query);
         return client;
     }
 }

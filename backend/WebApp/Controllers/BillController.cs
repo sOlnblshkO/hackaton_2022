@@ -8,16 +8,16 @@ namespace backend.Controllers;
 [Route("[controller]")]
 public class BillController : ControllerBase
 {
-    private readonly GetBillQueryHandler _getBillQueryHandler;
+    private readonly PayQueryHandler _payQueryHandler;
 
-    public BillController(GetBillQueryHandler getBillQueryHandler)
+    public BillController(PayQueryHandler payQueryHandler)
     {
-        _getBillQueryHandler = getBillQueryHandler;
+        _payQueryHandler = payQueryHandler;
     }
 
     [HttpPost("GetBill")]
     public IActionResult GetBill([FromBody] QiwiBillrequestDto dto)
     {
-        return Ok(_getBillQueryHandler.Execute(dto));
+        return Ok(_payQueryHandler.Execute(dto));
     }
 }
