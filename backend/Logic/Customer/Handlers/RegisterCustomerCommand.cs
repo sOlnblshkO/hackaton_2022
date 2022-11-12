@@ -1,4 +1,5 @@
-﻿using Context.Models;
+﻿using Context.Constants;
+using Context.Models;
 using Infrastructure.CQRS;
 using Logic.Customer.DTO;
 using Microsoft.AspNetCore.Identity;
@@ -27,7 +28,7 @@ public class RegisterCustomerCommand: IQuery<RegisterCustomerDto, IdentityResult
             Name = dto.Name,
             Surname = dto.Surname,
             UserName = dto.Surname + " " + dto.Name,
-            Role = _roleManager.Roles.FirstOrDefault(x=>x.Name == "User")
+            Role = _roleManager.Roles.FirstOrDefault(x=>x.Name == UserRoleConstants.CustomerRoleName)
         };
         var res = _userManager.CreateAsync(newUser, dto.Password).Result;
         return Task.FromResult(res);

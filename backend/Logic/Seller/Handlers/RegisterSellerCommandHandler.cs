@@ -1,3 +1,5 @@
+using Context.Constants;
+using Context.Models;
 using Domain.DTO.Seller;
 using Infrastructure.CQRS;
 using Microsoft.AspNetCore.Identity;
@@ -9,6 +11,8 @@ public class RegisterSellerCommandHandler: ICommand<RegisterSellerDTO>
 {
     private readonly UserManager<Context.Models.User> _userManager;
     private readonly AppContext _dbContext;
+    private readonly RoleManager<Role> _roleManager;
+
 
     public RegisterSellerCommandHandler(UserManager<Context.Models.User> userManager, AppContext dbContext)
     {
@@ -23,7 +27,8 @@ public class RegisterSellerCommandHandler: ICommand<RegisterSellerDTO>
             PhoneNumber = dto.Phone,
             Name = dto.Name,
             UserName = dto.Phone,
-            Surname = ""
+            Surname = "",
+            Role = _roleManager.Roles.FirstOrDefault(x=>x.Name == UserRoleConstants.SellerRoleName)
         };
         
         var hashedPass =_userManager.PasswordHasher.HashPassword(newUser, dto.Password);
