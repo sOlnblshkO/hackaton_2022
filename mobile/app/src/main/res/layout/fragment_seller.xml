@@ -10,7 +10,7 @@
         style="@style/AuthTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/customer"
+        android:text="@string/seller"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,19 +23,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="100dp"
         android:gravity="center">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:id="@+id/sellerLoginInput"/>
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/sellerPassInput"/>
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/enter"/>
+            android:text="@string/enter"
+            android:id="@+id/sellerAuthButton"
+            android:layout_marginTop="16dp"/>
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

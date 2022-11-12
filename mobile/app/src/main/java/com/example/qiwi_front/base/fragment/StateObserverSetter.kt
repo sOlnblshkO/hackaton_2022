@@ -31,6 +31,7 @@ open class StateObserverSetter : Fragment() {
         when (stateEnum) {
             StateEnum.Normal ->{
                 statesBinding.tryAgainButton.visibility = View.GONE
+                setStatesBindingIsFocusableIsClickable(false)
             }
             StateEnum.Loading -> {
                 statesBinding.stateLoading.root.visibility = View.VISIBLE
