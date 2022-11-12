@@ -17,9 +17,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public IActionResult Login([FromHeader]string phoneNumber)
+    public IActionResult Login([FromBody]GetCodeForPhoneDto request)
     {
-        var result = _loginQueryHandler.Execute(phoneNumber);
+        var result = _loginQueryHandler.Execute(request);
         return Ok(result);
     }
     

@@ -10,7 +10,7 @@ public class QiwiService : IQiwiService
     const string MoqedSiteId  = "sa3khn-09";
     const string MoqedAccountId  = "04361f47-e4ff-41c7-bd37-dd473f472187";
 
-    public async Task<string> SentSms(string phoneNum)
+    public async Task<string> SentSms(string phoneNum, string requestId)
     {
         var client = GetClient();
         var requestBody = JsonConvert.SerializeObject(
@@ -18,7 +18,7 @@ public class QiwiService : IQiwiService
             {
                 accountId = "qwe12",
                 phone = phoneNum,
-                requestId = "asd1232q77w1e321211"
+                requestId = requestId
             });
         StringContent httpContent = new StringContent(requestBody, System.Text.Encoding.UTF8, "application/json");
         HttpResponseMessage response = client.PostAsync("payin-tokenization-api/v1/sites/sa3khn-09/token-requests", 

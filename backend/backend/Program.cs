@@ -5,9 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddService();
 
 var app = builder.Build();
-
-app.MapControllers();
-app.UseRouting();
+app.ConfigureWebApp();
 app.MapGet("/", () => "Hello World!");
 
 app.Run();
