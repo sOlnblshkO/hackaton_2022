@@ -1,5 +1,6 @@
 package com.example.data.core.ktorClient
 
+import android.util.Log
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
