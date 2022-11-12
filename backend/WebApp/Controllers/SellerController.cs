@@ -13,11 +13,13 @@ public class SellerController: ControllerBase
 {
     private readonly GetSellersListQueryHandler _getSellersListQueryHandler;
     private readonly GetSellerInfoQueryHandler _getSellerInfoQueryHandler;
+    private readonly RegisterSellerCommandHandler _registerSellerCommandHandler;
 
-    public SellerController(GetSellersListQueryHandler getSellersListQueryHandler, GetSellerInfoQueryHandler getSellerInfoQueryHandler)
+    public SellerController(GetSellersListQueryHandler getSellersListQueryHandler, GetSellerInfoQueryHandler getSellerInfoQueryHandler, RegisterSellerCommandHandler registerSellerCommandHandler)
     {
         _getSellersListQueryHandler = getSellersListQueryHandler;
         _getSellerInfoQueryHandler = getSellerInfoQueryHandler;
+        _registerSellerCommandHandler = registerSellerCommandHandler;
     }
 
     [HttpGet("GetSellers")]
@@ -33,6 +35,14 @@ public class SellerController: ControllerBase
     {
         var result = await _getSellerInfoQueryHandler.Execute(id);
         return Ok(result);
+    }
+
+    [HttpPost("Register")]
+    [AllowAnonymous]
+    public async Task<IActionResult> RegisterSeller(RegisterSellerDTO dto)
+    {
+       await _registerSellerCommandHandler.Handle(dto);
+       return Ok();
     }
    
 }
