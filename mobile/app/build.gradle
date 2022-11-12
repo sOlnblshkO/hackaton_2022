@@ -58,10 +58,12 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation project(path: ':data')
+    implementation project(path: ':domain')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.6.10"
+    implementation 'com.google.code.gson:gson:2.10'
 
     // lifecycle
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.0'
@@ -76,6 +78,9 @@ dependencies {
     // qrcode generator
     implementation 'com.github.androidmads:QRGenerator:1.0.1'
     implementation 'com.google.zxing:core:3.3.2'
+
+    // qrcode scanner
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'
 
     // dots
     implementation "com.tbuonomo:dotsindicator:4.3"

@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.qiwi_front.R
 import com.example.qiwi_front.presentation.pages.auth.AuthFragment
 import com.example.qiwi_front.presentation.pages.customerMain.customerMainPage.CustomerMainFragment
-import com.example.qiwi_front.presentation.pages.sellerMain.SellerMainPage.SellerMainFragment
-import com.example.qiwi_front.presentation.pages.sellerMain.slides.scanner.ScannerFragment
+import com.example.qiwi_front.presentation.pages.sellerMain.sellerMainPage.SellerMainFragment
 import com.example.qiwi_front.utils.consts.AppSettings
 import com.example.qiwi_front.utils.enums.UserRoleEnum
 import com.example.qiwi_front.utils.helpers.sharedPreferences.SharedPreferencesUsage

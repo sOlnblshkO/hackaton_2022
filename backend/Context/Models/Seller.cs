@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Context.Models;
 
-public class Seller : IdentityUser
+public class Seller : BaseEntity<long>
 {
+    public User User { get; set; }
     public string AvatarUrl { get; set; }
     public string SiteId { get; set; }
     public string Name { get; set; }

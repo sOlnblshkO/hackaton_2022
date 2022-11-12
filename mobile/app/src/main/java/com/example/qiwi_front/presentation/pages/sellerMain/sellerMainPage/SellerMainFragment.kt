@@ -1,4 +1,4 @@
-package com.example.qiwi_front.presentation.pages.sellerMain.SellerMainPage
+package com.example.qiwi_front.presentation.pages.sellerMain.sellerMainPage
 
 import com.example.qiwi_front.R
 import com.example.qiwi_front.base.fragment.FragmentBase

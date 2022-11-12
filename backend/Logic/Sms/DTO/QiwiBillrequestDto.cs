@@ -9,7 +9,7 @@ public class QiwiBillrequestDto : PayRequestQiwiDto
 
 public class BillData
 {
-    public decimal value { get; set; }
+    public string value { get; set; }
     public string currency { get; set; }
 }
 
