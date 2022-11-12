@@ -10,7 +10,9 @@ public static class ServiceExtension
     public static void AddContext(this IServiceCollection serviceProvider)
     {
 
-        serviceProvider.AddDbContextFactory<AppContext>();
+        serviceProvider.AddDbContext<AppContext>(options=>
+            options
+                .UseSqlServer("Server=HT-WS-001;Initial Catalog=hack;Persist Security Info=True;Integrated Security=SSPI;  Encrypt=False;"));
     }
     
     public class DbContextFactory : IDesignTimeDbContextFactory<AppContext>

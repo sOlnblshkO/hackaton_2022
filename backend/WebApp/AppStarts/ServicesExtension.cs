@@ -7,6 +7,7 @@ using Logic.QIWI.GetClient;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Internal;
 using AppContext = Context.AppContext;
+using ServiceExtension = Context.ServiceExtension;
 
 namespace backend.AppStarts;
 
