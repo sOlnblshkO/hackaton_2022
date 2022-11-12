@@ -4,7 +4,7 @@ import android.widget.Toast
 import com.example.qiwi_front.base.fragment.FragmentBase
 import com.example.qiwi_front.databinding.FragmentSellerBinding
 import com.example.qiwi_front.databinding.StatesBinding
-import com.example.qiwi_front.presentation.pages.scanner.ScannerFragment
+import com.example.qiwi_front.presentation.pages.sellerMain.SellerMainPage.SellerMainFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -30,7 +30,7 @@ class SellerAuthFragment @Inject constructor() : FragmentBase<FragmentSellerBind
             if (!it)
                 return@observe
 
-            addFragment(ScannerFragment.newInstance())
+            addFragment(SellerMainFragment.newInstance())
         }
     }
 

@@ -4,12 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.qiwi_front.R
 import com.example.qiwi_front.presentation.pages.auth.AuthFragment
-import com.example.qiwi_front.presentation.pages.profile.ProfileFragment
-import com.example.qiwi_front.presentation.pages.scanner.ScannerFragment
+import com.example.qiwi_front.presentation.pages.sellerMain.SellerMainPage.SellerMainFragment
+import com.example.qiwi_front.presentation.pages.sellerMain.slides.scanner.ScannerFragment
 import com.example.qiwi_front.utils.consts.AppSettings
 import com.example.qiwi_front.utils.enums.UserRoleEnum
 import com.example.qiwi_front.utils.helpers.sharedPreferences.SharedPreferencesUsage
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -44,15 +43,7 @@ class MainActivity : AppCompatActivity() {
 //            }
 //            true
 //        }
-//        supportFragmentManager
-//            .apply {
-//                fragments.forEach {
-//                    beginTransaction().remove(it).commit()
-//                }
-//                beginTransaction()
-//                    .replace(R.id.mainFragmentContainer, AuthFragment.newInstance())
-//                    .commit()
-//            }
+//
 
         if (sharedPreferencesUsage.getBoolean(applicationContext, AppSettings.IsAuth)){
             if (sharedPreferencesUsage.getStringSharedPreferences(applicationContext, AppSettings.UserRole) == UserRoleEnum.Customer.name){
@@ -60,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.mainFragmentContainer, ScannerFragment.newInstance())
+                    .replace(R.id.mainFragmentContainer, SellerMainFragment.newInstance())
                     .commit()
             }
         }else {

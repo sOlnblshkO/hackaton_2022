@@ -1,4 +1,4 @@
-package com.example.qiwi_front.presentation.pages.scanner
+package com.example.qiwi_front.presentation.pages.sellerMain.slides.scanner
 
 import com.example.qiwi_front.base.fragment.FragmentBase
 import com.example.qiwi_front.databinding.FragmentScannerBinding

@@ -12,7 +12,7 @@ class AuthFragment @Inject constructor() : FragmentBase<AuthFragmentBinding, Aut
 
     override fun setUpViews() {
         super.setUpViews()
-        binding.authSlider.adapter = ScreenSlidePagerAdapter(this)
+        binding.authSlider.adapter = ScreenSlidePagerAdapter(requireActivity())
         binding.authDots.attachTo(binding.authSlider)
     }
 

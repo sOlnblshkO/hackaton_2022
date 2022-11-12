@@ -1,4 +1,4 @@
-package com.example.qiwi_front.presentation.pages.profile
+package com.example.qiwi_front.presentation.pages.sellerMain.slides.profile
 
 import com.example.qiwi_front.base.fragment.FragmentBase
 import com.example.qiwi_front.databinding.FragmentProfileBinding
