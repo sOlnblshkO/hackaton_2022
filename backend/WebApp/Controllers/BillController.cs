@@ -1,5 +1,6 @@
 ﻿using Logic.Sms.DTO;
 using Logic.Sms.Handlers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
@@ -14,7 +15,7 @@ public class BillController : ControllerBase
     {
         _payQueryHandler = payQueryHandler;
     }
-
+    [Authorize]
     [HttpPost("GetBill")]
     public IActionResult GetBill([FromBody] QiwiBillrequestDto dto)
     {

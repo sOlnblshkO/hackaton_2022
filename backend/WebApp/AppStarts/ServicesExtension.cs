@@ -1,10 +1,13 @@
-﻿using Context;
+﻿using System.Text;
+using Context;
 using Context.Models;
 using Logic;
 using Logic.Customer.Handlers;
 using Logic.QIWI;
 using Logic.QIWI.GetClient;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using AppContext = Context.AppContext;
 
 namespace backend.AppStarts;
@@ -14,6 +17,7 @@ public static class ServicesExtension
     public static void AddService(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddContext();
+        
         serviceCollection.AddIdentity<User, Role>(options =>
             {
                 options.User.AllowedUserNameCharacters =
@@ -23,6 +27,29 @@ public static class ServicesExtension
             })
             .AddEntityFrameworkStores<AppContext>()
             .AddDefaultTokenProviders();
+        
+        serviceCollection.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+
+            // TODO Убрать в appsettings
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = "http://localhost:4200",
+                    ValidIssuer = "http://localhost:5000",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("JWTAuthenticationHIGHsecuredPasswordVVVp1OH7Xzyr"))
+                };
+            });
+
         
         serviceCollection.AddLogic();
         serviceCollection.AddControllers();

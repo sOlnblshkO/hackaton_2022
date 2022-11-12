@@ -6,6 +6,8 @@ builder.Services.AddService();
 
 var app = builder.Build();
 app.ConfigureWebApp();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapGet("/", () => "Hello World!");
 
 app.Run();

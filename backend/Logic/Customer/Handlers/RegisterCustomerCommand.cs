@@ -25,9 +25,7 @@ public class RegisterCustomerCommand: IQuery<RegisterCustomerDto, IdentityResult
             Surname = dto.Surname,
             UserName = dto.Surname + " " + dto.Name,
         };
-        
-        var hashedPass =_userManager.PasswordHasher.HashPassword(newUser, dto.Password);
-        var res = _userManager.CreateAsync(newUser, hashedPass).Result;
+        var res = _userManager.CreateAsync(newUser, dto.Password).Result;
         return Task.FromResult(res);
     }
 }
