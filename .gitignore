@@ -58,8 +58,8 @@ x64/
 x86/
 build/
 bld/
-[Bb]in/
-[Oo]bj/
+backend/[Bb]in/
+backend/[Oo]bj/
 msbuild.log
 msbuild.err
 msbuild.wrn
