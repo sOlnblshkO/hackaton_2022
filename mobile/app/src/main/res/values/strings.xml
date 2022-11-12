@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">qiwi_front</string>
+    <string name="customer">Покупатель</string>
+    <string name="seller">Продавец</string>
 </resources>
