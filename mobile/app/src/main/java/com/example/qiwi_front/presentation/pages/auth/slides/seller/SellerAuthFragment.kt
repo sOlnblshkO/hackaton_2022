@@ -4,7 +4,7 @@ import android.widget.Toast
 import com.example.qiwi_front.base.fragment.FragmentBase
 import com.example.qiwi_front.databinding.FragmentSellerBinding
 import com.example.qiwi_front.databinding.StatesBinding
-import com.example.qiwi_front.presentation.pages.sellerMain.SellerMainPage.SellerMainFragment
+import com.example.qiwi_front.presentation.pages.sellerMain.sellerMainPage.SellerMainFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
