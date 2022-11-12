@@ -8,6 +8,7 @@ import com.example.qiwi_front.databinding.FragmentShopsListBinding
 import com.example.qiwi_front.databinding.StatesBinding
 import com.example.qiwi_front.presentation.pages.customerMain.slides.shopList.adapter.ShopListAdapter
 import com.example.qiwi_front.presentation.pages.customerMain.slides.shopList.contracts.ShopListItem
+import com.example.qiwi_front.presentation.pages.selectedShop.SelectedShopFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -23,18 +24,24 @@ class ShopsListFragment @Inject constructor() :
         binding.shopListItemSearchInput.doOnTextChanged { text, start, before, count ->
             if (text.isNullOrEmpty() || text.length < 3) {
                 binding.shopListRecycler.adapter =
-                    ShopListAdapter(layoutInflater, viewModel.shopItems, fileLoader)
+                    ShopListAdapter(
+                        layoutInflater,
+                        viewModel.shopItems,
+                        fileLoader,
+                        ::openSelectedShop
+                    )
             } else {
                 binding.shopListRecycler.adapter =
                     ShopListAdapter(
                         layoutInflater,
                         viewModel.shopItems.filter{ e -> e.name.contains(text) },
-                        fileLoader
+                        fileLoader,
+                        ::openSelectedShop
                     )
             }
         }
         binding.shopListRecycler.adapter =
-            ShopListAdapter(layoutInflater, viewModel.shopItems, fileLoader)
+            ShopListAdapter(layoutInflater, viewModel.shopItems, fileLoader, ::openSelectedShop)
         binding.shopListRecycler.setHasFixedSize(true)
         binding.shopListRecycler.layoutManager = LinearLayoutManager(requireContext())
     }
@@ -42,6 +49,10 @@ class ShopsListFragment @Inject constructor() :
     override fun observeData() {
         super.observeData()
         viewModel.load()
+    }
+
+    fun openSelectedShop(shopListItem: ShopListItem){
+        addFragment(SelectedShopFragment.newInstance(shopListItem.id))
     }
 
     companion object {

@@ -10,7 +10,8 @@ import com.example.qiwi_front.presentation.pages.customerMain.slides.shopList.co
 class ShopListAdapter(
     val layoutInflater: LayoutInflater,
     val shopItems: List<ShopListItem>,
-    val fileLoader: FileLoader
+    val fileLoader: FileLoader,
+    val openSelectedShop: (ShopListItem) -> Unit
 ) :
     RecyclerView.Adapter<ShopListAdapter.ShopListViewHolder>() {
 
@@ -27,6 +28,9 @@ class ShopListAdapter(
 //
 //        var bitmap = fileLoader.getBitmap(shopItems[position].url)
 //        holder.view.shopListItemImage.setImageBitmap(bitmap)
+        holder.view.root.setOnClickListener {
+            openSelectedShop(shopItems[position])
+        }
     }
 
     override fun getItemCount(): Int {
