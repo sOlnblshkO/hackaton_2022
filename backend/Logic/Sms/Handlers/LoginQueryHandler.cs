@@ -1,8 +1,8 @@
 ﻿using Infrastructure.CQRS;
-using Logic.Auth.DTO;
 using Logic.QIWI;
+using Logic.Sms.DTO;
 
-namespace Logic.Auth;
+namespace Logic.Sms.Handlers;
 
 public class LoginQueryHandler : IQuery<GetCodeForPhoneDto, string>
 {

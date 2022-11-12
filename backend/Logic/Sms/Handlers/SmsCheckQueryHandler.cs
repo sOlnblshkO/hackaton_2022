@@ -1,9 +1,9 @@
 ﻿using Infrastructure.CQRS;
-using Logic.Auth.DTO;
 using Logic.QIWI;
+using Logic.Sms.DTO;
 using Newtonsoft.Json;
 
-namespace Logic.Auth;
+namespace Logic.Sms.Handlers;
 
 public class SmsCheckQueryHandler : IQuery<SmsDto, UserTokensDto>
 {
@@ -17,6 +17,6 @@ public class SmsCheckQueryHandler : IQuery<SmsDto, UserTokensDto>
     public async Task<UserTokensDto> Execute(SmsDto query)
     {
         var result = await _qiwiService.CheckSms(query);
-        return JsonConvert.DeserializeObject<UserTokensDto>(result);
+        return JsonConvert.DeserializeObject<UserTokensDto>(result) ?? throw new InvalidOperationException();
     }
 }

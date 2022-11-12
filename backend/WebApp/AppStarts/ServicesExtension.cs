@@ -1,6 +1,7 @@
 ﻿using Context;
 using Logic;
 using Logic.QIWI;
+using Logic.QIWI.GetClient;
 using Microsoft.AspNetCore.Identity;
 
 namespace backend.AppStarts;
@@ -14,5 +15,6 @@ public static class ServicesExtension
         serviceCollection.AddControllers();
         serviceCollection.AddHttpClient();
         serviceCollection.AddScoped<IQiwiService, QiwiService>();
+        serviceCollection.AddScoped<IGetQiwiClient, GetQiwiClient>();
     }
 }

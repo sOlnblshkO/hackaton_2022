@@ -1,16 +1,17 @@
-﻿using Logic.Auth.DTO;
+﻿using Logic.Sms.DTO;
+using Logic.Sms.Handlers;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Logic.Auth;
+namespace backend.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class AuthController : ControllerBase
+public class SmsController : ControllerBase
 {
     private readonly LoginQueryHandler _loginQueryHandler;
     private readonly SmsCheckQueryHandler _smsCheckQueryHandler;
 
-    public AuthController(LoginQueryHandler loginQueryHandler, SmsCheckQueryHandler smsCheckQueryHandler)
+    public SmsController(LoginQueryHandler loginQueryHandler, SmsCheckQueryHandler smsCheckQueryHandler)
     {
         _loginQueryHandler = loginQueryHandler;
         _smsCheckQueryHandler = smsCheckQueryHandler;
@@ -29,4 +30,5 @@ public class AuthController : ControllerBase
         var result = _smsCheckQueryHandler.Execute(request);
         return Ok(result);
     }
+    
 }
