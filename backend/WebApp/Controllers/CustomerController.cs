@@ -19,7 +19,6 @@ public class CustomerController : ControllerBase
     [HttpPost("Register")]
     public IActionResult RegisterUser([FromBody] RegisterCustomerDto dto)
     {
-        _registerCustomerCommand.Handle(dto);
-        return Ok();
+        return Ok(_registerCustomerCommand.Execute(dto));
     }
 }
