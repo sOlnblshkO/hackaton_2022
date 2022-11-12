@@ -5,4 +5,5 @@
     <string name="enter">Войти</string>
     <string name="not_registered_yet"><u>Ещё нет аккаунта?</u></string>
     <string name="search">Поиск</string>
+    <string name="create_qr_code">Создать QR-код</string>
 </resources>

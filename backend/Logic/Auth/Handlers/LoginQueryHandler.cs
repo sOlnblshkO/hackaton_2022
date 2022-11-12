@@ -1,9 +1,10 @@
 ﻿using Infrastructure.CQRS;
+using Logic.Auth.DTO;
 using Logic.QIWI;
 
 namespace Logic.Auth;
 
-public class LoginQueryHandler : IQuery<string, string>
+public class LoginQueryHandler : IQuery<GetCodeForPhoneDto, string>
 {
     private readonly IQiwiService _qiwiService;
 
@@ -12,9 +13,9 @@ public class LoginQueryHandler : IQuery<string, string>
         _qiwiService = qiwiService;
     }
 
-    public async Task<string> Execute(string query)
+    public async Task<string> Execute(GetCodeForPhoneDto request)
     {
        
-        return  await _qiwiService.SentSms(query);
+        return  await _qiwiService.SentSms(request.PhoneNumber, request.RequestId);
     }
 }

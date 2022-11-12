@@ -2,6 +2,6 @@
 
 public class SmsDto
 {
-    public string AuthGuid { get; set; }
-    public string Sms { get; set; }
+    public string requestId { get; set; }
+    public string smsCode { get; set; }
 }
