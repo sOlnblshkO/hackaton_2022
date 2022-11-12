@@ -7,6 +7,7 @@ namespace backend.Controllers;
 
 
 [ApiController]
+[Authorize]
 [Route("[controller]")]
 public class SellerController: ControllerBase
 {
