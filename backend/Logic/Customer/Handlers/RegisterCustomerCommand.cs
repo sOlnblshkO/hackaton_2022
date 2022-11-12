@@ -29,7 +29,7 @@ public class RegisterCustomerCommand: IQuery<RegisterCustomerDto, bool>
         };
         
         var hashedPass =_userManager.PasswordHasher.HashPassword(newUser, dto.Password);
-        var x = _userManager.CreateAsync(newUser, hashedPass).Result.Succeeded;
-        return Task.FromResult(x);
+        var res = _userManager.CreateAsync(newUser, hashedPass).Result.Succeeded;
+        return Task.FromResult(res);
     }
 }
