@@ -6,6 +6,8 @@ import androidmads.library.qrgenearator.QRGEncoder
 import com.example.qiwi_front.base.fragment.FragmentBase
 import com.example.qiwi_front.databinding.FragmentQrCodeBinding
 import com.example.qiwi_front.databinding.StatesBinding
+import com.example.qiwi_front.utils.contracts.PaymentData
+import com.google.gson.Gson
 
 class QrCodeFragment(val amount: String, val name: String, val legalName: String) :
     FragmentBase<FragmentQrCodeBinding, QrCodeViewModel>() {
@@ -17,9 +19,11 @@ class QrCodeFragment(val amount: String, val name: String, val legalName: String
         binding.qrCodeAmountText.text = "Сумма $amount"
         binding.qrCodeNameText.text = "Магазин $name"
         binding.qrCodeLegalText.text = "ИП $legalName"
-
+            //TODO() Переписать на проброс модели в конструктор
+        val paymentData = PaymentData("Ого!!! Это же токен!???")
+        val gson = Gson()
         val qrCodeEncoder =
-            QRGEncoder("secret", QRGContents.Type.TEXT, QRDimension)
+            QRGEncoder(gson.toJson(paymentData), QRGContents.Type.TEXT, QRDimension)
         binding.qrCodePlaceImage.setImageBitmap(qrCodeEncoder.bitmap)
     }
 

@@ -7,9 +7,13 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
+import com.example.qiwi_front.R
 import com.example.qiwi_front.base.fragment.FragmentBase
 import com.example.qiwi_front.databinding.FragmentScannerBinding
 import com.example.qiwi_front.databinding.StatesBinding
+import com.example.qiwi_front.presentation.pages.paymentConfirmation.PaymentConfirmationFragment
+import com.example.qiwi_front.utils.contracts.PaymentData
+import com.google.gson.Gson
 import com.google.zxing.BarcodeFormat
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -34,7 +38,16 @@ class ScannerFragment @Inject constructor() : FragmentBase<FragmentScannerBindin
 
         // Callbacks
         codeScanner.decodeCallback = DecodeCallback {
-            Log.i("sdf", it.text)
+            try {
+                val gson = Gson()
+                val paymentData = gson.fromJson(it.text, PaymentData::class.java)
+                addFragment(PaymentConfirmationFragment.newInstance(paymentData))
+            }
+            catch (ex: Exception){
+                viewModel.someMessage.postValue(getString(R.string.qr_code_reading_error))
+            }
+
+
         }
         codeScanner.startPreview()
     }
