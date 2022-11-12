@@ -3,6 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/auth_slider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <include
         layout="@layout/states"
         android:id="@+id/auth_states"/>
