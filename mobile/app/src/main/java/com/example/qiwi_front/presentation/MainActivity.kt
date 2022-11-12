@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.qiwi_front.R
 import com.example.qiwi_front.presentation.pages.auth.AuthFragment
+import com.example.qiwi_front.presentation.pages.customerMain.customerMainPage.CustomerMainFragment
 import com.example.qiwi_front.presentation.pages.sellerMain.SellerMainPage.SellerMainFragment
 import com.example.qiwi_front.presentation.pages.sellerMain.slides.scanner.ScannerFragment
 import com.example.qiwi_front.utils.consts.AppSettings
@@ -47,7 +48,10 @@ class MainActivity : AppCompatActivity() {
 
         if (sharedPreferencesUsage.getBoolean(applicationContext, AppSettings.IsAuth)){
             if (sharedPreferencesUsage.getStringSharedPreferences(applicationContext, AppSettings.UserRole) == UserRoleEnum.Customer.name){
-
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.mainFragmentContainer, CustomerMainFragment.newInstance())
+                    .commit()
             } else {
                 supportFragmentManager
                     .beginTransaction()
