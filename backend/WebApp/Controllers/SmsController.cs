@@ -8,19 +8,19 @@ namespace backend.Controllers;
 [Route("[controller]")]
 public class SmsController : ControllerBase
 {
-    private readonly LoginQueryHandler _loginQueryHandler;
+    private readonly GetSmsQueryHandler _getSmsQueryHandler;
     private readonly SmsCheckQueryHandler _smsCheckQueryHandler;
 
-    public SmsController(LoginQueryHandler loginQueryHandler, SmsCheckQueryHandler smsCheckQueryHandler)
+    public SmsController(GetSmsQueryHandler getSmsQueryHandler, SmsCheckQueryHandler smsCheckQueryHandler)
     {
-        _loginQueryHandler = loginQueryHandler;
+        _getSmsQueryHandler = getSmsQueryHandler;
         _smsCheckQueryHandler = smsCheckQueryHandler;
     }
 
-    [HttpPost("login")]
-    public IActionResult Login([FromBody]GetCodeForPhoneDto request)
+    [HttpPost("GetSms")]
+    public IActionResult GetSms([FromBody]GetCodeForPhoneDto request)
     {
-        var result = _loginQueryHandler.Execute(request);
+        var result = _getSmsQueryHandler.Execute(request);
         return Ok(result);
     }
     

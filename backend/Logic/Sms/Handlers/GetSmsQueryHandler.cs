@@ -4,11 +4,11 @@ using Logic.Sms.DTO;
 
 namespace Logic.Sms.Handlers;
 
-public class LoginQueryHandler : IQuery<GetCodeForPhoneDto, string>
+public class GetSmsQueryHandler : IQuery<GetCodeForPhoneDto, string>
 {
     private readonly IQiwiService _qiwiService;
 
-    public LoginQueryHandler(IQiwiService qiwiService)
+    public GetSmsQueryHandler(IQiwiService qiwiService)
     {
         _qiwiService = qiwiService;
     }
