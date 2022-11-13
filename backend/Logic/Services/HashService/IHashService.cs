@@ -2,7 +2,7 @@
 
 public interface IHashService
 {
-    public string Hash(string value);
+    public string? Hash(string value);
 
-    public string Convert(string value);
+    public string Convert(string? value);
 }

@@ -44,7 +44,6 @@ namespace Context.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PaymentToken")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RequestId")
@@ -343,13 +342,13 @@ namespace Context.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "5833bac1-6fe8-4e6c-b862-7f62df3b59d0",
+                            ConcurrencyStamp = "60188983-ebc8-45be-b8d5-b1fbad6a4ddf",
                             Name = "User"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "9695dc61-c2e3-4b5e-905e-d9f02f4fe633",
+                            ConcurrencyStamp = "c3954180-d259-4445-8016-6207ae9bcd12",
                             Name = "Seller"
                         });
                 });

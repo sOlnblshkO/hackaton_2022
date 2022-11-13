@@ -57,7 +57,7 @@ public class PayCommandQueryHandler: IQuery<QrCheckQuery, bool>
             },
 
         });
-        if (result == "true") // TODO Полная несусветная дичь, надо исправить!
+        if (result == "True") // TODO Полная несусветная дичь, надо исправить!
         {
             payment.PaymentState = PaymentState.Finished;
             _appContext.Update(payment);

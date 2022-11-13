@@ -1,4 +1,5 @@
 ﻿using Context.Models;
+using Domain.DTO.Payment;
 using Logic.Payment;
 using Logic.Payment.DTO;
 using Microsoft.AspNetCore.Authorization;
@@ -44,12 +45,12 @@ public class PaymentController : ControllerBase
 
     [Authorize]
     [HttpPost("Pay")]
-    public async Task<IActionResult> CheckQr([FromBody] string paymentId)
+    public async Task<IActionResult> CheckQr([FromBody] PayDto dto)
     {
         return Ok(await _payCommandQuery.Execute(new QrCheckQuery
         {
             ClaimsPrincipal = User,
-            PaymentId = paymentId
+            PaymentId = dto.PaymentId
         }));
     }
 }
