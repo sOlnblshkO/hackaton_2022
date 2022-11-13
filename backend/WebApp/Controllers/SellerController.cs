@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Domain.DTO.Seller;
 using Logic.Seller.Handlers;
 using Microsoft.AspNetCore.Authorization;
@@ -14,12 +15,14 @@ public class SellerController: ControllerBase
     private readonly GetSellersListQueryHandler _getSellersListQueryHandler;
     private readonly GetSellerInfoQueryHandler _getSellerInfoQueryHandler;
     private readonly RegisterSellerCommandHandler _registerSellerCommandHandler;
+    private readonly GetSellerProfileDataQueryHandler _getSellerProfileDataQueryHandler;
 
-    public SellerController(GetSellersListQueryHandler getSellersListQueryHandler, GetSellerInfoQueryHandler getSellerInfoQueryHandler, RegisterSellerCommandHandler registerSellerCommandHandler)
+    public SellerController(GetSellersListQueryHandler getSellersListQueryHandler, GetSellerInfoQueryHandler getSellerInfoQueryHandler, RegisterSellerCommandHandler registerSellerCommandHandler, GetSellerProfileDataQueryHandler getSellerProfileDataQueryHandler)
     {
         _getSellersListQueryHandler = getSellersListQueryHandler;
         _getSellerInfoQueryHandler = getSellerInfoQueryHandler;
         _registerSellerCommandHandler = registerSellerCommandHandler;
+        _getSellerProfileDataQueryHandler = getSellerProfileDataQueryHandler;
     }
 
     [HttpGet("GetSellers")]
@@ -43,6 +46,14 @@ public class SellerController: ControllerBase
     {
        await _registerSellerCommandHandler.Handle(dto);
        return Ok();
+    }
+    
+    [HttpGet]
+    [Authorize]
+    public IActionResult GetSellerProfileData()
+    {
+        _getSellerProfileDataQueryHandler.Execute(HttpContext.User.FindFirst(x => x.Type == ClaimTypes.Name).Value);
+        return Ok();
     }
    
 }

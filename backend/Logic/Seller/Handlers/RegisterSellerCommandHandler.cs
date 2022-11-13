@@ -27,7 +27,7 @@ public class RegisterSellerCommandHandler: ICommand<RegisterSellerDTO>
         {
             PhoneNumber = dto.Phone,
             Name = dto.Name,
-            UserName = dto.Phone,
+            UserName = dto.Name,
             Surname = "",
             Role = _roleManager.Roles.FirstOrDefault(x=>x.Name == UserRoleConstants.SellerRoleName)
         };
