@@ -31,7 +31,10 @@ class QrCodeFragment(
         val gson = Gson()
         val qrCodeEncoder =
             QRGEncoder(gson.toJson(tempToQrCode), QRGContents.Type.TEXT, QRDimension)
-        binding.qrCodePlaceImage.setImageBitmap(qrCodeEncoder.bitmap)
+        binding.qrCodePlaceImage.setImageBitmap(qrCodeEncoder.getBitmap(0))
+        binding.qrCodeToolbar.setNavigationOnClickListener {
+            goBack()
+        }
     }
 
     companion object {

@@ -4,53 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.pages.qrCode.QrCodeFragment"
     android:background="@color/white"
+    android:clickable="true"
     android:focusable="true"
-    android:clickable="true">
+    tools:context=".presentation.pages.qrCode.QrCodeFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/qrCodeToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/orange"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back"
+        app:navigationIconTint="@color/white">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/qrCodeToolbarText"
+            style="@style/ToolbarText"
+            android:text="Покажите Qr-код продавцу" />
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="QR-код активен до 11:00 12.11.2022"
+        android:text="QR-код активен до\n11:00 12.11.2022"
+        android:textColor="@color/grey"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/qrCodePlaceImage" />
 
     <ImageView
+        android:layout_marginTop="10dp"
         android:id="@+id/qrCodePlaceImage"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:src="@drawable/profile"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/qrCodeState"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/qrCodeToolbar" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/qrCodeState"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qrCodePlaceImage">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:text="@string/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="28dp"
+            android:layout_marginBottom="15dp"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/qrCodeAmountText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="5dp"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/qrCodeLegalText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:layout_marginBottom="5dp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/qrCodeNameText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="18dp"/>
     </LinearLayout>
 
     <include

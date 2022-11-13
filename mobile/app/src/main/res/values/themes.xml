@@ -32,6 +32,9 @@
     <style name="OrangeButton" parent="DefaultButton">
         <item name="backgroundTint">@color/orange</item>
     </style>
+    <style name="DangerButton" parent="DefaultButton">
+        <item name="backgroundTint">@color/red</item>
+    </style>
     <style name="WhiteButton" parent="DefaultButton">
         <item name="android:textColor">@color/black</item>
         <item name="backgroundTint">@color/white</item>
@@ -61,5 +64,4 @@
         <item name="android:textSize">19dp</item>
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
-
 </resources>

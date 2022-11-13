@@ -11,4 +11,5 @@
     <color name="grey">#7F7F7F</color>
     <color name="lightGrey">#AFAFAF</color>
     <color name="transparent05">#05000000</color>
+    <color name="red">#F44336</color>
 </resources>
