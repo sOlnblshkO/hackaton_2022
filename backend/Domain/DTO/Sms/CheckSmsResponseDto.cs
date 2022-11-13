@@ -1,4 +1,4 @@
-﻿namespace Logic.Sms.DTO;
+﻿namespace Domain.DTO.Sms;
 
 public class CheckSmsResponseDto
 {
