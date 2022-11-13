@@ -27,13 +27,12 @@ public class RegisterSellerCommandHandler: ICommand<RegisterSellerDTO>
         {
             PhoneNumber = dto.Phone,
             Name = dto.Name,
-            UserName = dto.Phone,
-            Surname = "",
-            Role = _roleManager.Roles.FirstOrDefault(x=>x.Name == UserRoleConstants.SellerRoleName)
+            Surname = dto.Phone,
+            UserName = dto.Phone + " " + dto.Name,
+            Role = _roleManager.Roles.FirstOrDefault(x=>x.Name == UserRoleConstants.CustomerRoleName)
         };
         
-        var hashedPass =_userManager.PasswordHasher.HashPassword(newUser, dto.Password);
-        var res = _userManager.CreateAsync(newUser, hashedPass).Result;
+        var res = _userManager.CreateAsync(newUser, dto.Password).Result;
 
         if (res.Succeeded)
         {
