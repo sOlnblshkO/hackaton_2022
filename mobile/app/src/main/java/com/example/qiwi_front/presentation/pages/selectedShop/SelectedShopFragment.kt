@@ -51,6 +51,8 @@ class SelectedShopFragment @Inject constructor(val selectedShopId: Int) :
             binding.shopAddressText.setText(it.address)
             binding.shopCategoryText.setText(it.category)
             binding.shopDescriptionText.setText(it.description)
+            if (it.avatarUrl.isEmpty())
+                return@observe
             Handler(Looper.getMainLooper()).post {
                 Picasso
                     .get()

@@ -27,12 +27,12 @@ class ShopListAdapter(
     override fun onBindViewHolder(holder: ShopListViewHolder, position: Int) {
         holder.view.shopListItemName.text = shopItems[position].name
         holder.view.shopListDescriptionText.text = shopItems[position].category
-        if (shopItems[position].avatarUrl.isEmpty())
-            return
-
         holder.view.root.setOnClickListener {
             openSelectedShop(shopItems[position])
         }
+
+        if (shopItems[position].avatarUrl.isEmpty())
+            return
 
         Handler(Looper.getMainLooper()).post {
             Picasso
