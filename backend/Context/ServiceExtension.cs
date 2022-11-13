@@ -12,7 +12,7 @@ public static class ServiceExtension
 
         serviceProvider.AddDbContext<AppContext>(options=>
             options
-                .UseSqlServer("Server=HT-WS-026\\MSSQLSERVER02;Initial Catalog=hack;Persist Security Info=True;Integrated Security=SSPI;  Encrypt=False;"));
+                .UseSqlServer("Server=HT-WS-001;Initial Catalog=km-prod;Persist Security Info=True;Integrated Security=SSPI; Encrypt=False;"));
     }
     
     public class DbContextFactory : IDesignTimeDbContextFactory<AppContext>
@@ -22,7 +22,7 @@ public static class ServiceExtension
             // Если будет время переделать на json
             var optionsBuilder = new DbContextOptionsBuilder<AppContext>();
             optionsBuilder
-                .UseSqlServer("Server=HT-WS-026\\MSSQLSERVER02;Initial Catalog=hack;Persist Security Info=True;Integrated Security=SSPI;  Encrypt=False;");
+                .UseSqlServer("Server=HT-WS-001;Initial Catalog=km-prod;Persist Security Info=True;Integrated Security=SSPI; Encrypt=False;");
 
             return new AppContext(optionsBuilder.Options);
         }

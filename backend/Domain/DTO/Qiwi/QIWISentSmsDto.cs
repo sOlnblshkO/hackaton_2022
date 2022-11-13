@@ -1,4 +1,4 @@
-﻿namespace Logic.QIWI;
+﻿namespace Domain.DTO.Qiwi;
 
 public class QIWISentSmsDto
 {

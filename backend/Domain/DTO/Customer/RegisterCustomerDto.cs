@@ -1,4 +1,4 @@
-﻿namespace Logic.Customer.DTO;
+﻿namespace Domain.DTO.Customer;
 
 public class RegisterCustomerDto
 {

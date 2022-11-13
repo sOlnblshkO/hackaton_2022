@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Logic.Auth.DTO;
+namespace Domain.DTO.Auth;
 
 public class LoginDto
 {

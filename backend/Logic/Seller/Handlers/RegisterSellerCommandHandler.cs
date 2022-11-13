@@ -29,7 +29,7 @@ public class RegisterSellerCommandHandler: ICommand<RegisterSellerDTO>
             Name = dto.Name,
             Surname = dto.Phone,
             UserName = dto.Phone + " " + dto.Name,
-            Role = _roleManager.Roles.FirstOrDefault(x=>x.Name == UserRoleConstants.CustomerRoleName)
+            Role = _roleManager.Roles.FirstOrDefault(x=>x.Name == UserRoleConstants.SellerRoleName)
         };
         
         var res = _userManager.CreateAsync(newUser, dto.Password).Result;

@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Headers;
+using Domain.DTO.Qiwi;
 using Domain.DTO.Sms;
 using Logic.QIWI.GetClient;
 using Newtonsoft.Json;

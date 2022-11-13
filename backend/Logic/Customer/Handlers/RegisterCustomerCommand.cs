@@ -1,7 +1,7 @@
 ﻿using Context.Constants;
 using Context.Models;
+using Domain.DTO.Customer;
 using Infrastructure.CQRS;
-using Logic.Customer.DTO;
 using Microsoft.AspNetCore.Identity;
 
 namespace Logic.Customer.Handlers;

@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using System.Text;
 using Context.Models;
-using Logic.Auth.DTO;
+using Domain.DTO.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

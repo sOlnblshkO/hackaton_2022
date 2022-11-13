@@ -1,4 +1,4 @@
-﻿using Logic.Customer.DTO;
+﻿using Domain.DTO.Customer;
 using Logic.Customer.Handlers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
