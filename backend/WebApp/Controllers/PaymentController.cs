@@ -46,6 +46,10 @@ public class PaymentController : ControllerBase
     [HttpPost("Pay")]
     public async Task<IActionResult> CheckQr([FromBody] string paymentId)
     {
-        return Ok(await _payCommandQuery.Execute(paymentId));
+        return Ok(await _payCommandQuery.Execute(new QrCheckQuery
+        {
+            ClaimsPrincipal = User,
+            PaymentId = paymentId
+        }));
     }
 }
