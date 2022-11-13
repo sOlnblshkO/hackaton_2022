@@ -4,7 +4,6 @@ import android.widget.Toast
 import com.example.qiwi_front.base.fragment.FragmentBase
 import com.example.qiwi_front.databinding.FragmentSellerAuthBinding
 import com.example.qiwi_front.databinding.StatesBinding
-import com.example.qiwi_front.presentation.pages.customerMain.customerMainPage.CustomerMainFragment
 import com.example.qiwi_front.presentation.pages.registration.seller.SellerRegistrationFragment
 import com.example.qiwi_front.presentation.pages.sellerMain.sellerMainPage.SellerMainFragment
 import com.example.qiwi_front.utils.enums.UserRoleEnum
@@ -48,7 +47,7 @@ class SellerAuthFragment @Inject constructor() :
             }
 
             saveUser(it.token)
-            replaceFragment(CustomerMainFragment.newInstance())
+            replaceFragment(SellerMainFragment.newInstance())
         }
     }
 
