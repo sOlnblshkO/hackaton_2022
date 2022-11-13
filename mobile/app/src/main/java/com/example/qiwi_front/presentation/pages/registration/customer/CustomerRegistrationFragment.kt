@@ -23,9 +23,9 @@ class CustomerRegistrationFragment @Inject constructor():
             setNotificationBarColor(requireContext().getColor(R.color.white))
             goBack()
         }
-        if (BuildConfig.DEBUG){
-            binding.phone.setText("78000000008")
-        }
+//        if (BuildConfig.DEBUG){
+//            binding.phone.setText("78000000008")
+//        }
         binding.customerRegsitrButton.setOnClickListener {
             viewModel.register(
                 binding.phone.text.toString(),

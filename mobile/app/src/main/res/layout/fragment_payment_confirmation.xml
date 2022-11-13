@@ -22,58 +22,82 @@
             android:text="@string/checkDataOfPayment" />
     </com.google.android.material.appbar.MaterialToolbar>
 
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/paymentConfirmationDestination"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Назначение платежа"
-        app:layout_constraintBottom_toTopOf="@+id/paymentUrName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkPaymentToolbar" />
+        app:layout_constraintTop_toBottomOf="@id/checkPaymentToolbar"
+        style="@style/Card">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/paymentUrName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/paymentName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkPaymentToolbar" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/paymentName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/paymentConfirmationAmountTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkPaymentToolbar" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/paymentConfirmationDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Назначение платежа"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toTopOf="@+id/paymentUrName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/checkPaymentToolbar" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/paymentConfirmationAmountTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Сумма платежа"
-        app:layout_constraintBottom_toTopOf="@+id/paymentAmount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/paymentName" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/paymentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="asd;lfk;asd "
+                android:textColor="@color/black"
+                android:textSize="19dp"
+                app:layout_constraintBottom_toTopOf="@+id/paymentConfirmationAmountTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/checkPaymentToolbar" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/paymentAmount"
-        android:layout_width="wrap_content"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/paymentUrName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="asdkfjalk a'sldf "
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/paymentName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/checkPaymentToolbar" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/acceptPaymentBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/paymentConfirmationAmountTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        style="@style/Card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/paymentConfirmationAmountTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Сумма платежа"
+                android:textSize="23dp"
+                android:textColor="@color/black"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/paymentAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:text="1000000"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/acceptPaymentBtn"
@@ -89,8 +113,6 @@
 
     <include
         android:id="@+id/paymentConfirmationState"
-        layout="@layout/states"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="88dp" />
+        layout="@layout/states" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

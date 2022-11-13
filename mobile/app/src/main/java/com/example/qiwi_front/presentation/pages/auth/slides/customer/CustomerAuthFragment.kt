@@ -36,10 +36,10 @@ class CustomerAuthFragment @Inject constructor() :
         binding.authCustomerNotHaveAccYetText.setOnClickListener{
             addFragment(CustomerRegistrationFragment.newInstance())
         }
-
-        if (BuildConfig.DEBUG){
-            binding.customerLoginInput.setText("78000000008")
-        }
+//
+//        if (BuildConfig.DEBUG){
+//            binding.customerLoginInput.setText("78000000008")
+//        }
     }
 
     override fun observeData() {
