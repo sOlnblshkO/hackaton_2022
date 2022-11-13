@@ -38,8 +38,8 @@ class PaymentConfirmationViewModel @Inject constructor() : ViewModelBase() {
 
     fun acceptPayment(paymentInformation: PaymentData) {
         viewModelScope.launch {
-
-            val response = billService.makePayment(
+            state.postValue(StateEnum.Loading)
+            billService.makePayment(
                 BillRequest(
                     Amount(
                         value = BigDecimal(paymentInformation.amount.toDouble()).setScale(
@@ -57,7 +57,7 @@ class PaymentConfirmationViewModel @Inject constructor() : ViewModelBase() {
                     requestId = paymentInformation.requestId
                 )
             )
-            paymentAccepted.postValue(response.isSuccess)
+            state.postValue(StateEnum.Normal)
         }
     }
 }
