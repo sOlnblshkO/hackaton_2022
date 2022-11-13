@@ -36,6 +36,8 @@ class CustomerMainFragment @Inject constructor() :
             true
         }
         binding.customerBottomMenu.selectedItemId = R.id.customerMainShopButton
+        setNotificationBarColor(requireContext().getColor(R.color.orange))
+
     }
 
     companion object {

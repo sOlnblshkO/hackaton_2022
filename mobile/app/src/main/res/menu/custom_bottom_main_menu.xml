@@ -3,7 +3,7 @@
 
     <item android:title="Магазин"
         android:id="@+id/customerMainShopButton"
-        android:icon="@drawable/shop_cart"/>
+        android:icon="@drawable/shop_cart" />
     <item android:title="Профиль"
         android:id="@+id/customerMainProfileButton"
         android:icon="@drawable/profile"/>

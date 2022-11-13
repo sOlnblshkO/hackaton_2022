@@ -59,6 +59,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation project(path: ':data')
     implementation project(path: ':domain')
+    implementation project(path: ':shared')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
@@ -85,5 +86,6 @@ dependencies {
     // dots
     implementation "com.tbuonomo:dotsindicator:4.3"
 
-
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
 }

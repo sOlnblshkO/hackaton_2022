@@ -6,9 +6,9 @@ import com.example.qiwi_front.R
 import com.example.qiwi_front.presentation.pages.auth.AuthFragment
 import com.example.qiwi_front.presentation.pages.customerMain.customerMainPage.CustomerMainFragment
 import com.example.qiwi_front.presentation.pages.sellerMain.sellerMainPage.SellerMainFragment
-import com.example.qiwi_front.utils.consts.AppSettings
+import com.example.shared.consts.AppSettings
 import com.example.qiwi_front.utils.enums.UserRoleEnum
-import com.example.qiwi_front.utils.helpers.sharedPreferences.SharedPreferencesUsage
+import com.example.shared.sharedPreferncesUsage.SharedPreferencesUsage
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

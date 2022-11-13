@@ -5,10 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/auth_slider"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
         android:layout_width="wrap_content"
@@ -17,7 +20,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/auth_dots"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginBottom="32dp"
+        app:dotsColor="@color/lightGrey"
+        app:selectedDotColor="@color/orange"
+        app:dotsSize="10dp"
+        app:dotsWidthFactor="1"/>
 
     <include
         android:id="@+id/auth_states"

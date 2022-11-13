@@ -4,16 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/transparent05"
     tools:context=".presentation.pages.customerMain.slides.shopList.ShopsListFragment">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/shopListItemSearchInput"
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/shopListItemSearchInputLayout"
+        style="@style/TextInputLayout"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp"
-        android:hint="@string/search"/>
+        app:startIconDrawable="@drawable/search">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/shopListItemSearchInput"
+            style="@style/TextInput"
+            android:hint="@string/search"
+            tools:layout_editor_absoluteX="16dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shopListRecycler"
@@ -22,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shopListItemSearchInput"
+        app:layout_constraintTop_toBottomOf="@+id/shopListItemSearchInputLayout"
         tools:listitem="@layout/shop_list_item"/>
 
     <include

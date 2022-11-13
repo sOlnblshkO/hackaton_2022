@@ -2,9 +2,7 @@ package com.example.qiwi_front.base.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
@@ -23,7 +21,7 @@ abstract class FragmentBase<VBinding : ViewBinding, ViewModel : ViewModelBase> :
     protected lateinit var binding: VBinding
     protected abstract fun getViewBinding(): VBinding
 
-    protected abstract fun getStateBinding(): StatesBinding
+    protected abstract fun getStateBinding(): StatesBinding?
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +47,8 @@ abstract class FragmentBase<VBinding : ViewBinding, ViewModel : ViewModelBase> :
     @SuppressLint("FragmentLiveDataObserve", "HardwareIds")
     open fun observeData() {
         viewModel.state.observe(this) {
-            setState(it)
+            if (statesBinding != null)
+                setState(it)
         }
 
         viewModel.someMessage.observe(this) {
@@ -90,26 +89,15 @@ abstract class FragmentBase<VBinding : ViewBinding, ViewModel : ViewModelBase> :
         activity?.supportFragmentManager?.popBackStack()
     }
 
-    fun clearSharedPreferencesAndExit(errorMessage: String) {
-//        sharedPreferencesUsage.clearSharedPreferences(requireContext())
-//
-//        if (errorMessage.isEmpty()){
-//            replaceFragment(LoginOperatorFragment.newInstance())
-//            return
-//        }
-
-//        questionDialogBuilder.showDialog(requireContext(), errorMessage)
-//        questionDialogBuilder.binding.exitButtonsLayout.dialogCancelButton.visibility =
-//            View.GONE
-//        questionDialogBuilder.binding.exitButtonsLayout.dialogOkButton.setOnClickListener {
-//            questionDialogBuilder.dismiss()
-//            replaceFragment(LoginOperatorFragment.newInstance())
-//        }
-    }
-
     private fun init() {
         binding = getViewBinding()
         statesBinding = getStateBinding()
         viewModel = ViewModelProvider(this).get(getViewModelClass())
+    }
+
+    fun setNotificationBarColor(colorInt: Int){
+        val window: Window = requireActivity().window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = colorInt
     }
 }

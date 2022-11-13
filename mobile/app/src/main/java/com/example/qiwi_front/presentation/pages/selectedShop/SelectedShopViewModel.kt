@@ -3,15 +3,15 @@ package com.example.qiwi_front.presentation.pages.selectedShop
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.data.services.code.CodeService
+import com.example.data.services.sellers.SellersService
 import com.example.domain.requests.code.getCode.GetCodeRequest
 import com.example.domain.requests.code.sendCode.SendCodeRequest
 import com.example.domain.responses.code.getCode.GetCodeResponse
 import com.example.domain.responses.code.sendCode.SendCodeResponse
+import com.example.domain.responses.sellersList.SelectedSellerResponse
 import com.example.qiwi_front.base.viewModel.ViewModelBase
-import com.example.qiwi_front.presentation.pages.selectedShop.contracts.LoadedShopData
 import com.example.qiwi_front.utils.enums.StateEnum
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.UUID
 import javax.inject.Inject
@@ -22,19 +22,17 @@ class SelectedShopViewModel @Inject constructor() : ViewModelBase() {
     @Inject
     lateinit var codeService: CodeService
 
-    val loadedShopData = MutableLiveData<LoadedShopData>()
+    @Inject
+    lateinit var sellersService: SellersService
+
     val gotCodeResponse = MutableLiveData<GetCodeResponse>()
     val sendCodeResponse = MutableLiveData<SendCodeResponse>()
+    val loadedSelectedShop = MutableLiveData<SelectedSellerResponse>()
 
     fun loadData(selectedShopId: Int) {
         viewModelScope.launch {
             state.postValue(StateEnum.Loading)
-            delay(1000)
-            loadedShopData.postValue(
-                LoadedShopData(
-                    selectedShopId, "Крутое заведение", "someUrl", "By koyash"
-                )
-            )
+            loadedSelectedShop.postValue(sellersService.getSelectedSeller(selectedShopId))
             state.postValue(StateEnum.Normal)
         }
     }

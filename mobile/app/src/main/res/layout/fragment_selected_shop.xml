@@ -4,60 +4,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
+    android:background="@color/white"
     android:clickable="true"
-    tools:context=".presentation.pages.selectedShop.SelectedShopFragment"
-    android:background="@color/white">
+    android:focusable="true"
+    tools:context=".presentation.pages.selectedShop.SelectedShopFragment">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/selectedShopState"
-        app:layout_constraintStart_toStartOf="@+id/selectedShopState"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/profile" />
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/selectedShopToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/orange"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back"
+        app:navigationIconTint="@color/white">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/shopNameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/selectedShopToolbarText"
+            style="@style/ToolbarText" />
+    </com.google.android.material.appbar.MaterialToolbar>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/shopLegalNameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:gravity="center_horizontal">
+        app:layout_constraintTop_toBottomOf="@+id/selectedShopToolbar">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="250dp"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Введите сумму"
-            android:id="@+id/amountInput"/>
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/create_qr_code"
-            android:id="@+id/createQrCodeButton"/>
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/selectedShopState"
+            app:layout_constraintStart_toStartOf="@+id/selectedShopState"
+            app:layout_constraintTop_toBottomOf="@+id/selectedShopToolbar">
 
-    </LinearLayout>
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:id="@+id/selectedShopImage"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:src="@drawable/profile" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/shopDescriptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="22dp"
+                    android:layout_marginBottom="20dp"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/shopCategoryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="5dp"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/shopAddressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:layout_marginBottom="5dp"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/shopLegalNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"/>
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/orange"
+                app:cardCornerRadius="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/amountInput"
+                            style="@style/TextInput"
+                            android:background="@drawable/rounded_shape"
+                            android:layout_width="150dp"
+                            android:layout_height="45dp"
+                            android:inputType="number"
+                            android:padding="5dp"
+                            android:hint="@string/sum"
+                            />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/createQrCodeButton"
+                        style="@style/WhiteButton"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Получить код" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
 
 
     <include
