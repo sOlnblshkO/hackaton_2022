@@ -1,4 +1,4 @@
-﻿using Logic.Sms.DTO;
+﻿using Domain.DTO.Sms;
 using Logic.Sms.Handlers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

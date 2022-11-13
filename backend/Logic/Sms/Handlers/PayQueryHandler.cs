@@ -1,6 +1,6 @@
-﻿using Infrastructure.CQRS;
+﻿using Domain.DTO.Sms;
+using Infrastructure.CQRS;
 using Logic.QIWI;
-using Logic.Sms.DTO;
 
 namespace Logic.Sms.Handlers;
 

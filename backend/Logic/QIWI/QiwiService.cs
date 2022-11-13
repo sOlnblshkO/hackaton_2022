@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Headers;
+using Domain.DTO.Sms;
 using Logic.QIWI.GetClient;
-using Logic.Sms.DTO;
 using Newtonsoft.Json;
 
 namespace Logic.QIWI;

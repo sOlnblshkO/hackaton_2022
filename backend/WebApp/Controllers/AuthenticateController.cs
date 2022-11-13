@@ -6,26 +6,22 @@ using Logic.Auth.DTO;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Logic.Auth;
+namespace backend.Controllers;
 
 [Route("[controller]")]
 [ApiController]
 public class AuthenticateController : ControllerBase
 {
     private readonly UserManager<User> _userManager;
-    private readonly RoleManager<Role> _roleManager;
     private readonly IConfiguration _configuration;
 
     public AuthenticateController(
         UserManager<User> userManager,
-        RoleManager<Role> roleManager,
         IConfiguration configuration)
     {
         _userManager = userManager;
-        _roleManager = roleManager;
         _configuration = configuration;
     }
     
@@ -35,9 +31,6 @@ public class AuthenticateController : ControllerBase
     {
         var user = await _userManager.Users
             .FirstOrDefaultAsync(x =>x.PhoneNumber == model.PhoneNumber);
-
-        var foo = _userManager.PasswordHasher
-            .VerifyHashedPassword(user, user.PasswordHash, model.Password);
         if (user != null && 
             _userManager.PasswordHasher
                 .VerifyHashedPassword(user, user.PasswordHash ,model.Password) 
