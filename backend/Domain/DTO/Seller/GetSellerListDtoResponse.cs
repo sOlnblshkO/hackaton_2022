@@ -2,7 +2,7 @@ namespace Domain.DTO.Seller;
 
 public class GetSellerListDtoResponse
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     
     public string AvatarUrl { get; set; }
     

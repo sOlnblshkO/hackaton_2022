@@ -1,46 +1,46 @@
 using Domain.DTO.Seller;
 using Infrastructure.CQRS;
+using Microsoft.EntityFrameworkCore;
+using AppContext = Context.AppContext;
 
 namespace Logic.Seller.Handlers;
 
 public class GetSellersListQueryHandler : IQuery<string, List<GetSellerListDtoResponse>>
 {
-    private static List<GetSellerListDtoResponse> _responses = new List<GetSellerListDtoResponse>()
+    private readonly AppContext _dbContext;
+
+    public GetSellersListQueryHandler(AppContext dbContext)
     {
-        new GetSellerListDtoResponse()
-        {
-            Id = 1,
-            Name = "МВидео",
-            Category = "Техника",
-            AvatarUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Mvideo.svg/1280px-Mvideo.svg.png"
-        },
-        new GetSellerListDtoResponse()
-        {
-            Id = 2,
-            Name = "Золотое Яблоко",
-            Category = "Косметика",
-            AvatarUrl =
-                "https://goldapple.ru/static/version1668028003/global/images/ga_black_logo.png"
-        },
-        new GetSellerListDtoResponse()
-        {
-            Id = 3,
-            Name = "Ламода",
-            Category = "Интернет магазин",
-            AvatarUrl =
-                "https://papik.pro/uploads/posts/2022-01/1643600978_2-papik-pro-p-lamoda-logotip-2.jpg"
-        }
-    };
+        _dbContext = dbContext;
+    }
 
     public async Task<List<GetSellerListDtoResponse>> Execute(string? query)
     {
-        await Task.CompletedTask;
         if (query is null)
         {
-            return _responses;
+            return await _dbContext.Sellers.Select(x => new GetSellerListDtoResponse()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Category = x.Caregory,
+                AvatarUrl = x.AvatarUrl
+            }).ToListAsync();
         }
 
-        var filteredNames = _responses.Select(x => x.Name.ToLower()).Where(x => x.Contains(query.ToLower()));
-        return _responses.Where(x => filteredNames.Contains(x.Name.ToLower())).ToList();
+        var filteredNames = _dbContext.Sellers
+            .Select(x => x.Name.ToLower())
+            .Where(x => x.Contains(query.ToLower()));
+        
+        return await _dbContext.Sellers
+            .Where(x => filteredNames.Contains(x.Name.ToLower()))
+            .Select(x =>
+                new GetSellerListDtoResponse()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Category = x.Caregory,
+                    AvatarUrl = x.AvatarUrl
+                })
+            .ToListAsync();
     }
 }
