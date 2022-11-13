@@ -79,17 +79,17 @@
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/OrangeButton"
+                android:layout_margin="10dp"
+                android:text="@string/register"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/customerRegsitrButton"/>
         </LinearLayout>
     </ScrollView>
-
-    <com.google.android.material.button.MaterialButton
-        style="@style/OrangeButton"
-        android:layout_margin="10dp"
-        android:text="@string/register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/customerRegsitrButton"/>
 
     <include
         android:id="@+id/customerRegisterState"

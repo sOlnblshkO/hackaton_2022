@@ -3,6 +3,9 @@ package com.example.qiwi_front.presentation.pages.auth.slides.seller
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.data.services.auth.AuthService
+import com.example.domain.requests.auth.AuthRequest
+import com.example.domain.responses.auth.AuthResponse
 import com.example.qiwi_front.base.viewModel.ViewModelBase
 import com.example.shared.consts.AppSettings
 import com.example.qiwi_front.utils.enums.StateEnum
@@ -18,21 +21,22 @@ import javax.inject.Inject
 class SellerAuthViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModelBase() {
     @Inject
-    lateinit var sharedPreferencesUsage: com.example.shared.sharedPreferncesUsage.SharedPreferencesUsage
+    lateinit var sharedPreferencesUsage: SharedPreferencesUsage
+    @Inject
+    lateinit var authService: AuthService
 
-    var authorized = MutableLiveData(false)
+    var authorized = MutableLiveData<AuthResponse>()
 
-    fun authorize() {
+    fun authorize(phone: String, pass: String) {
         viewModelScope.launch {
             state.postValue(StateEnum.Loading)
-            delay(1000)
-            sharedPreferencesUsage.putBoolean(context, com.example.shared.consts.AppSettings.IsAuth, true)
-            sharedPreferencesUsage.putStringSharedPreferences(
-                context,
-                com.example.shared.consts.AppSettings.UserRole,
-                UserRoleEnum.Seller.name
+            authorized.postValue(
+                authService.authorize(
+                    AuthRequest(
+                    phone, pass
+                )
+                )
             )
-            authorized.postValue(true)
             state.postValue(StateEnum.Normal)
         }
     }
