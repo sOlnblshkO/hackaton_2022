@@ -1,4 +1,4 @@
-﻿using Logic.Sms.DTO;
+﻿using Domain.DTO.Sms;
 
 namespace Logic.QIWI;
 

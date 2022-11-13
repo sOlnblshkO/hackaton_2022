@@ -16,6 +16,7 @@ public static class ServicesExtension
 {
     public static void AddService(this IServiceCollection serviceCollection)
     {
+        serviceCollection.AddSignalR();
         serviceCollection.AddContext();
         
         serviceCollection.AddIdentity<User, Role>(options =>

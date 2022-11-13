@@ -88,4 +88,8 @@ dependencies {
 
     //picasso
     implementation 'com.squareup.picasso:picasso:2.8'
+
+    //signalr
+    implementation 'com.microsoft.signalr:signalr:1.0.0'
+
 }

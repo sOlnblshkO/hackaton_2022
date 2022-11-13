@@ -1,4 +1,4 @@
-﻿using Logic.Sms.DTO;
+﻿using Domain.DTO.Sms;
 using Logic.Sms.Handlers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace backend.Controllers;
 
 [ApiController]
-[Authorize]
+// [Authorize]
 [Route("[controller]")]
 public class SmsController : ControllerBase
 {
