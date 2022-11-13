@@ -47,7 +47,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sellerLoginInput"
-                style="@style/TextInput" />
+                style="@style/TextInput"
+                android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -56,7 +57,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sellerPassInput"
-                style="@style/TextInput" />
+                style="@style/TextInput"
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -70,7 +72,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/not_registered_yet"
-            android:textColor="@color/orange" />
+            android:textColor="@color/orange"
+            android:id="@+id/sellerAuthNotRegisterYet"/>
     </LinearLayout>
 
     <include

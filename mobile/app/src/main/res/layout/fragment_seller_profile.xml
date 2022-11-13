@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusable="true"
+    android:clickable="true">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:text="Иван"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:text="Иванов"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
+
+    <TableLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/materialTextView3">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/lightGrey">
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="16dp"
+                    android:text="Избранных\n10"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/lightGrey">
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="16dp"
+                    android:text="Оплачено\n23"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/lightGrey">
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="16dp"
+                    android:text="Прочитано QR\nкодов 10"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.card.MaterialCardView>
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/lightGrey">
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="16dp"
+                    android:text="Отменено \n оплат 0"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.card.MaterialCardView>
+        </TableRow>
+
+    </TableLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/DangerButton"
+        android:id="@+id/seller_logout_btn"
+        android:text="Выйти"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="10dp"
+        tools:ignore="MissingConstraints"/>
+
+    <include
+        layout="@layout/states"
+        android:id="@+id/profile_states"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

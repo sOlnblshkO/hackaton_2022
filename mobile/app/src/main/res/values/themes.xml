@@ -64,4 +64,5 @@
         <item name="android:textSize">19dp</item>
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
+
 </resources>

@@ -3,7 +3,7 @@ package com.example.qiwi_front.presentation.pages.registration.customer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.data.services.registration.RegistrationService
-import com.example.domain.requests.registration.RegistrationRequest
+import com.example.domain.requests.registration.CustomerRegistrationRequest
 import com.example.qiwi_front.base.viewModel.ViewModelBase
 import com.example.qiwi_front.utils.enums.StateEnum
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,7 +27,7 @@ class CustomerRegistrationViewModel @Inject constructor(): ViewModelBase() {
         viewModelScope.launch {
             state.postValue(StateEnum.Loading)
             registrationService.createCustomer(
-                RegistrationRequest(
+                CustomerRegistrationRequest(
                     phone, name, surname, pass
                 )
             )

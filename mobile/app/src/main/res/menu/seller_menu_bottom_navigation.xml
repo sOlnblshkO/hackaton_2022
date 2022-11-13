@@ -3,9 +3,9 @@
     <item
         android:id="@+id/nav_scanner"
         android:icon="@drawable/ic_outline_qr_code_scanner_24"
-        android:title=""/>
+        android:title="@string/qr_code"/>
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/profile"
-        android:title=""/>
+        android:title="@string/profile"/>
 </menu>

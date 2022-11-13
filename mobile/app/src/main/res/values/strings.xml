@@ -16,4 +16,12 @@
     <string name="enter_sum">Введите сумму</string>
     <string name="sum">Сумма</string>
     <string name="info">Информация</string>
+    <string name="legal_name">Юридическое лицо</string>
+    <string name="category">Категория</string>
+    <string name="description">Описание</string>
+    <string name="address">Адрес</string>
+    <string name="profile">Профиль</string>
+    <string name="qr_code">QR-код</string>
+    <string name="checkDataOfPayment">Проверьте данные платежа</string>
+    <string name="accept">Принять</string>
 </resources>

@@ -4,6 +4,7 @@ import android.widget.Toast
 import com.example.qiwi_front.base.fragment.FragmentBase
 import com.example.qiwi_front.databinding.FragmentSellerAuthBinding
 import com.example.qiwi_front.databinding.StatesBinding
+import com.example.qiwi_front.presentation.pages.registration.seller.SellerRegistrationFragment
 import com.example.qiwi_front.presentation.pages.sellerMain.sellerMainPage.SellerMainFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -20,6 +21,9 @@ class SellerAuthFragment @Inject constructor() : FragmentBase<FragmentSellerAuth
                 return@setOnClickListener;
             }
             viewModel.authorize()
+        }
+        binding.sellerAuthNotRegisterYet.setOnClickListener{
+            addFragment(SellerRegistrationFragment.newInstance())
         }
     }
 
