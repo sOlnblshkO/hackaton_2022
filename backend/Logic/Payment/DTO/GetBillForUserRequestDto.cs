@@ -3,5 +3,7 @@
 public class GetBillForUserRequestDto
 {
     public string SellerId { get; set; }
-    public string Amout { get; set; }
+    public string Amount { get; set; }
+    
+    public string Currency { get; set; }
 }

@@ -12,5 +12,7 @@ public class Payment : BaseEntity<long>
     public double Amount { get; set; }
     public PaymentState PaymentState { get; set; } 
     public Seller Seller { get; set; }
+    
+    public string Currency { get; set; }
   
 }

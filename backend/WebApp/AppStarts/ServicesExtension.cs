@@ -5,6 +5,7 @@ using Logic;
 using Logic.Customer.Handlers;
 using Logic.QIWI;
 using Logic.QIWI.GetClient;
+using Logic.Services.HashService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -58,5 +59,6 @@ public static class ServicesExtension
         serviceCollection.AddAuthorization();
         serviceCollection.AddScoped<IQiwiService, QiwiService>();
         serviceCollection.AddScoped<IGetQiwiClient, GetQiwiClient>();
+        serviceCollection.AddSingleton<IHashService, HashService>();
     }
 }

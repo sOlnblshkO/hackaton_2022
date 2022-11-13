@@ -46,7 +46,7 @@ public class QiwiService : IQiwiService
         return await response.Content.ReadAsStringAsync();
     }
 
-    public async Task<string> Pay(QiwiBillrequestDto dto)
+    public Task<string> Pay(QiwiBillrequestDto dto)
     {
         var client = _qiwiClient.Get();
         var dtoForQiwi = new PayRequestQiwiDto
@@ -73,6 +73,6 @@ public class QiwiService : IQiwiService
             httpContent).Result;
         
         
-        return await response.Content.ReadAsStringAsync();
+        return Task.FromResult(response.IsSuccessStatusCode.ToString());
     }
 }

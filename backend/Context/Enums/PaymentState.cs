@@ -2,6 +2,7 @@
 
 public enum PaymentState
 {
+    New,
     Active,
     Canceled,
     Expired,
