@@ -116,20 +116,21 @@
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sellerRegistrButton"
+                style="@style/OrangeButton"
+                android:layout_margin="10dp"
+                android:text="@string/register"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
         </LinearLayout>
 
 
     </androidx.core.widget.NestedScrollView>
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/sellerRegistrButton"
-        style="@style/OrangeButton"
-        android:layout_margin="10dp"
-        android:text="@string/register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <include
         android:id="@+id/sellerRegistrState"

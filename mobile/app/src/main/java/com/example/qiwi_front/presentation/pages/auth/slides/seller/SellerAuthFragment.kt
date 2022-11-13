@@ -4,13 +4,20 @@ import android.widget.Toast
 import com.example.qiwi_front.base.fragment.FragmentBase
 import com.example.qiwi_front.databinding.FragmentSellerAuthBinding
 import com.example.qiwi_front.databinding.StatesBinding
+import com.example.qiwi_front.presentation.pages.customerMain.customerMainPage.CustomerMainFragment
 import com.example.qiwi_front.presentation.pages.registration.seller.SellerRegistrationFragment
 import com.example.qiwi_front.presentation.pages.sellerMain.sellerMainPage.SellerMainFragment
+import com.example.qiwi_front.utils.enums.UserRoleEnum
+import com.example.shared.sharedPreferncesUsage.SharedPreferencesUsage
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SellerAuthFragment @Inject constructor() : FragmentBase<FragmentSellerAuthBinding, SellerAuthViewModel>() {
+class SellerAuthFragment @Inject constructor() :
+    FragmentBase<FragmentSellerAuthBinding, SellerAuthViewModel>() {
+
+    @Inject
+    lateinit var sharedPreferencesUsage: SharedPreferencesUsage
 
     override fun setUpViews() {
         super.setUpViews()
@@ -20,9 +27,12 @@ class SellerAuthFragment @Inject constructor() : FragmentBase<FragmentSellerAuth
                     .show()
                 return@setOnClickListener;
             }
-            viewModel.authorize()
+            viewModel.authorize(
+                binding.sellerLoginInput.text.toString(),
+                binding.sellerPassInput.text.toString()
+            )
         }
-        binding.sellerAuthNotRegisterYet.setOnClickListener{
+        binding.sellerAuthNotRegisterYet.setOnClickListener {
             addFragment(SellerRegistrationFragment.newInstance())
         }
     }
@@ -31,11 +41,33 @@ class SellerAuthFragment @Inject constructor() : FragmentBase<FragmentSellerAuth
         super.observeData()
 
         viewModel.authorized.observe(this) {
-            if (!it)
+            if (it?.token == null) {
+                Toast.makeText(requireContext(), "Не удалось авторизоваться", Toast.LENGTH_SHORT)
+                    .show()
                 return@observe
+            }
 
-            addFragment(SellerMainFragment.newInstance())
+            saveUser(it.token)
+            replaceFragment(CustomerMainFragment.newInstance())
         }
+    }
+
+    private fun saveUser(token: String) {
+        sharedPreferencesUsage.putStringSharedPreferences(
+            requireContext(),
+            com.example.shared.consts.AppSettings.Token,
+            token
+        )
+        sharedPreferencesUsage.putBoolean(
+            requireContext(),
+            com.example.shared.consts.AppSettings.IsAuth,
+            true
+        )
+        sharedPreferencesUsage.putStringSharedPreferences(
+            requireContext(),
+            com.example.shared.consts.AppSettings.UserRole,
+            UserRoleEnum.Seller.name
+        )
     }
 
     companion object {
@@ -44,7 +76,8 @@ class SellerAuthFragment @Inject constructor() : FragmentBase<FragmentSellerAuth
 
     override fun getViewModelClass(): Class<SellerAuthViewModel> = SellerAuthViewModel::class.java
 
-    override fun getViewBinding(): FragmentSellerAuthBinding = FragmentSellerAuthBinding.inflate(layoutInflater)
+    override fun getViewBinding(): FragmentSellerAuthBinding =
+        FragmentSellerAuthBinding.inflate(layoutInflater)
 
     override fun getStateBinding(): StatesBinding = binding.sellerAuthStates
 

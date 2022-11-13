@@ -18,7 +18,7 @@ class CustomerAuthFragment @Inject constructor() :
     FragmentBase<FragmentCustomerAuthBinding, CustomerAuthViewModel>() {
 
     @Inject
-    lateinit var sharedPreferencesUsage: com.example.shared.sharedPreferncesUsage.SharedPreferencesUsage
+    lateinit var sharedPreferencesUsage: SharedPreferencesUsage
 
     override fun setUpViews() {
         super.setUpViews()
