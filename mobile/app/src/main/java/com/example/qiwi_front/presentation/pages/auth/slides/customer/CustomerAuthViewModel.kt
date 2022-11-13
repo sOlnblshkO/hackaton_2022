@@ -3,15 +3,14 @@ package com.example.qiwi_front.presentation.pages.auth.slides.customer
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.data.services.auth.AuthService
+import com.example.domain.requests.auth.AuthRequest
+import com.example.domain.responses.auth.AuthResponse
 import com.example.qiwi_front.base.viewModel.ViewModelBase
-import com.example.qiwi_front.utils.consts.AppSettings
-import com.example.qiwi_front.utils.consts.AppSettings.Companion.IsAuth
 import com.example.qiwi_front.utils.enums.StateEnum
-import com.example.qiwi_front.utils.enums.UserRoleEnum
-import com.example.qiwi_front.utils.helpers.sharedPreferences.SharedPreferencesUsage
+import com.example.shared.sharedPreferncesUsage.SharedPreferencesUsage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,21 +19,23 @@ class CustomerAuthViewModel @Inject constructor(@ApplicationContext val context:
     ViewModelBase() {
 
     @Inject
-    lateinit var sharedPreferencesUsage: SharedPreferencesUsage
+    lateinit var authService: AuthService
 
-    var authorized = MutableLiveData(false)
+    @Inject
+    lateinit var sharedPreferencesUsage: com.example.shared.sharedPreferncesUsage.SharedPreferencesUsage
 
-    fun authorize() {
+    var authorized = MutableLiveData<AuthResponse>()
+
+    fun authorize(phone: String, pass: String) {
         viewModelScope.launch {
             state.postValue(StateEnum.Loading)
-            delay(1000)
-            sharedPreferencesUsage.putBoolean(context, IsAuth, true)
-            sharedPreferencesUsage.putStringSharedPreferences(
-                context,
-                AppSettings.UserRole,
-                UserRoleEnum.Customer.name
+
+            authorized.postValue(
+                authService.authorize(AuthRequest(
+                    phone, pass
+                ))
             )
-            authorized.postValue(true)
+
             state.postValue(StateEnum.Normal)
         }
     }

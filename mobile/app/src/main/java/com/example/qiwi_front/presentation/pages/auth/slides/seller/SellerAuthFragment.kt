@@ -2,14 +2,15 @@ package com.example.qiwi_front.presentation.pages.auth.slides.seller
 
 import android.widget.Toast
 import com.example.qiwi_front.base.fragment.FragmentBase
-import com.example.qiwi_front.databinding.FragmentSellerBinding
+import com.example.qiwi_front.databinding.FragmentSellerAuthBinding
 import com.example.qiwi_front.databinding.StatesBinding
+import com.example.qiwi_front.presentation.pages.registration.seller.SellerRegistrationFragment
 import com.example.qiwi_front.presentation.pages.sellerMain.sellerMainPage.SellerMainFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SellerAuthFragment @Inject constructor() : FragmentBase<FragmentSellerBinding, SellerAuthViewModel>() {
+class SellerAuthFragment @Inject constructor() : FragmentBase<FragmentSellerAuthBinding, SellerAuthViewModel>() {
 
     override fun setUpViews() {
         super.setUpViews()
@@ -20,6 +21,9 @@ class SellerAuthFragment @Inject constructor() : FragmentBase<FragmentSellerBind
                 return@setOnClickListener;
             }
             viewModel.authorize()
+        }
+        binding.sellerAuthNotRegisterYet.setOnClickListener{
+            addFragment(SellerRegistrationFragment.newInstance())
         }
     }
 
@@ -40,7 +44,7 @@ class SellerAuthFragment @Inject constructor() : FragmentBase<FragmentSellerBind
 
     override fun getViewModelClass(): Class<SellerAuthViewModel> = SellerAuthViewModel::class.java
 
-    override fun getViewBinding(): FragmentSellerBinding = FragmentSellerBinding.inflate(layoutInflater)
+    override fun getViewBinding(): FragmentSellerAuthBinding = FragmentSellerAuthBinding.inflate(layoutInflater)
 
     override fun getStateBinding(): StatesBinding = binding.sellerAuthStates
 

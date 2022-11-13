@@ -1,9 +1,9 @@
-package com.example.qiwi_front.utils.helpers.sharedPreferences
+package com.example.shared.sharedPreferncesUsage
 
 import android.content.Context
 import android.content.ContextWrapper
 import androidx.appcompat.app.AppCompatActivity
-import com.example.qiwi_front.utils.consts.AppSettings
+import com.example.shared.consts.AppSettings
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 

@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
     tools:context=".presentation.pages.customerMain.customerMainPage.CustomerMainFragment">
 
     <androidx.fragment.app.FragmentContainerView
@@ -11,14 +13,17 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/customerBottomMenu"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/customerMainContainer"/>
+        android:id="@+id/customerMainContainer"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/customerBottomMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/custom_bottom_main_menu"/>
+        app:menu="@menu/custom_bottom_main_menu"
+        app:itemIconTint="@color/bottom_menu"
+        app:itemTextColor="@color/bottom_menu" />
 
     <include
         android:id="@+id/customerMainState"

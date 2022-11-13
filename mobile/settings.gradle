@@ -10,3 +10,4 @@ rootProject.name = "qiwi_front"
 include ':app'
 include ':domain'
 include ':data'
+include ':shared'

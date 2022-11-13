@@ -21,9 +21,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ScannerFragment @Inject constructor() : FragmentBase<FragmentScannerBinding, ScannerViewModel>()  {
 
-    companion object {
-        fun newInstance() = ScannerFragment()
-    }
 
     override fun setUpViews() {
         super.setUpViews()
@@ -58,6 +55,9 @@ class ScannerFragment @Inject constructor() : FragmentBase<FragmentScannerBindin
         codeScanner.startPreview()
     }
 
+    companion object {
+        fun newInstance() = ScannerFragment()
+    }
     private fun requestCameraPermission() {
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
